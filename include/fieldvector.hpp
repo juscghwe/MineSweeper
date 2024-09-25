@@ -8,6 +8,7 @@
 #define FIELD_VECTOR_H
 
 #include "cellstruct.hpp"
+#include <limits>
 #include <stdexcept>
 #include <vector>
 
@@ -21,13 +22,21 @@ class FieldVector
      * @param row `size_t` Row the cell is in.
      * @param col `size_t` Column the cell is in.
      * @return `CellStructure`
-     * @throws `std::out_of_range` error if the vector is empty.
      * @throws `std::out_of_range` error if the pointed at cell is out of bounds.
      */
     CellStructure& at(size_t row, size_t column) {}
 
-    const size_t rows() {}
-    const size_t columns() {}
+    /**
+     * @brief Get number of rows in the grid.
+     * @return `size_t`
+     */
+    size_t FieldVector::rows() const { return fieldGrid_.size(); }
+
+    /**
+     * @brief Get number of columns in the grid.
+     * @return `size_t`
+     */
+    size_t FieldVector::columns() const { return fieldGrid_[0].size(); }
 
   private:
     std::size_t rows_;
@@ -37,15 +46,11 @@ class FieldVector
 
     /**
      * @private
+     * @brief Validates validity of the pointer.
      * @return `bool`
+     * @throws `std::out_of_range` error if the pointed at cell is out of bounds.
      */
-    const bool isEmpty() {}
-
-    /**
-     * @private
-     * @return `bool`
-     */
-    const bool isInvalidIndex(size_t row, size_t column) {}
+    bool isInvalidIndex(size_t row, size_t column) const {}
 };
 
 #endif  // FIELD_VECTOR_H_
