@@ -23,19 +23,21 @@ class FieldVector
      * @return `CellStructure`
      * @throws `std::out_of_range` error if the pointed at cell is out of bounds.
      */
-    CellStructure& at(size_t row, size_t column) {}
+    CellStructure& at(size_t row, size_t column);
 
     /**
      * @brief Get number of rows in the grid.
      * @return `size_t`
      */
-    size_t FieldVector::rows() const { return fieldGrid_.size(); }
+    size_t rows() const;
 
     /**
      * @brief Get number of columns in the grid.
      * @return `size_t`
      */
-    size_t FieldVector::columns() const { return fieldGrid_[0].size(); }
+    size_t columns() const;
+
+    const std::vector<std::vector<CellStructure>>& getFieldGrid() const { return fieldGrid_; }
 
   private:
     std::size_t rows_;
@@ -49,7 +51,7 @@ class FieldVector
      * @return `bool`
      * @throws `std::out_of_range` error if the pointed at cell is out of bounds.
      */
-    bool isInvalidIndex(size_t row, size_t column) const {}
+    bool isInvalidIndex(size_t row, size_t column) const;
 };
 
 #endif  // FIELD_VECTOR_H_
