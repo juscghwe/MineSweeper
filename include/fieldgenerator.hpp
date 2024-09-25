@@ -12,12 +12,14 @@
 class FieldGenerator
 {
   public:
-    FieldGenerator(int rows, int columns, int mines);
+    FieldGenerator(std::size_t rows, std::size_t columns, std::size_t mines);
+
+    void generateField();
 
   private:
-    int rows_;
-    int columns_;
-    int mines_;
+    std::size_t rows_;
+    std::size_t columns_;
+    std::size_t mines_;
     std::vector<std::vector<CellStructure>> fieldGrid_;
 
     void placeMines();
