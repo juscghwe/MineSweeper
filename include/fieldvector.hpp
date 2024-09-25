@@ -26,8 +26,8 @@ class FieldVector
      */
     CellStructure& at(size_t row, size_t column) {}
 
-    size_t rows() const {}
-    size_t columns() const {}
+    const size_t rows() {}
+    const size_t columns() {}
 
   private:
     std::size_t rows_;
@@ -39,13 +39,13 @@ class FieldVector
      * @private
      * @return `bool`
      */
-    bool isEmpty() {}
+    const bool isEmpty() {}
 
     /**
      * @private
      * @return `bool`
      */
-    bool isInvalidIndex(size_t row, size_t column) {}
+    const bool isInvalidIndex(size_t row, size_t column) {}
 };
 
 #endif  // FIELD_VECTOR_H_

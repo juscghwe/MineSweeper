@@ -12,7 +12,7 @@ FieldVector::FieldVector(std::size_t rows, std::size_t columns, std::size_t mine
 
 CellStructure& FieldVector::at(size_t row, size_t column)
 {
-    if (isEmpty) {
+    if (isEmpty()) {
         throw std::out_of_range("Grid not initialized.\n");
     }
     if (isInvalidIndex(row, column)) {
@@ -21,18 +21,18 @@ CellStructure& FieldVector::at(size_t row, size_t column)
     return fieldGrid_[row][column];
 }
 
-size_t FieldVector::rows() const
+const size_t FieldVector::rows()
 {
-    if (isEmpty) {
+    if (isEmpty()) {
         return 0;
     } else {
         return fieldGrid_.size();
     }
 }
 
-size_t FieldVector::columns() const
+const size_t FieldVector::columns()
 {
-    if (isEmpty) {
+    if (isEmpty()) {
         return 0;
     } else {
         return fieldGrid_[0].size();
@@ -40,13 +40,13 @@ size_t FieldVector::columns() const
 }
 
 // @private
-bool FieldVector::isEmpty()
+const bool FieldVector::isEmpty()
 {
     return fieldGrid_.empty();
 }
 
 // @private
-bool FieldVector::isInvalidIndex(size_t row, size_t column)
+const bool FieldVector::isInvalidIndex(size_t row, size_t column)
 {
     return (row >= rows() || column >= columns());
 }
