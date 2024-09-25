@@ -1,0 +1,49 @@
+# Google C/C++ Naming Conventions settings with adjustments
+# Author: Julian Schweizer
+
+Checks: "-*,readability-*,performance-*,modernize-*,bugprone-*,cppcoreguidelines-*,clang-analyzer-*"
+CheckOptions:
+  # general naming
+  - key: readability-identifier-naming.ClassCase
+    value: CamelCase
+  - key: readability-identifier-naming.StructCase
+    value: CamelCase
+  - key: readability-identifier-naming.EnumConstantCase
+    value: CamelCase
+  - key: readability-identifier-naming.FunctionCase
+    value: camelBack
+  - key: readability-identifier-naming.VariableCase
+    value: camelBack
+  - key: readability-identifier-naming.ConstantCase
+    value: CamelCase
+  - key: readability-identifier-naming.ConstantPrefix
+    value: k
+  - key: readability-identifier-naming.ConstexprVariableCase
+    value: CamelCase
+  - key: readability-identifier-naming.ConstexprVariablePrefix
+    value: k
+  - key: readability-identifier-naming.GlobalConstantCase
+    value: UPPER_CASE
+
+  # classes
+  - key: readability-identifier-naming.ClassMethodCase
+    value: camelBack
+  - key: readability-identifier-naming.ClassMemberCase
+    value: camelBack
+  - key: readability-identifier-naming.ClassMemberSuffix
+    value: _
+  # private
+  - key: readability-identifier-naming.PrivateMethodCase
+    value: camelBack
+  - key: readability-identifier-naming.PrivateMemberCase
+    value: camelBack
+  - key: readability-identifier-naming.PrivateMemberSuffix
+    value: _
+
+  # enum
+  - key: readability-identifier-naming.EnumConstantCase
+    value: CamelCase
+
+  # Additional checks
+  - key: modernize-use-trailing-return-type
+    value: false # Set to true to enforce trailing return types, or false to prefer traditional return types
