@@ -8,7 +8,6 @@
 #define FIELD_VECTOR_H
 
 #include "cellstruct.hpp"
-#include <limits>
 #include <stdexcept>
 #include <vector>
 
