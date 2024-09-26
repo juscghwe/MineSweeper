@@ -18,7 +18,13 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(main src/main.cpp)
+set(SOURCES
+    src/main.cpp
+    src/fieldvector.cpp
+    src/fieldgenerator.cpp
+    # Add other source files as needed
+)
+add_executable(main ${SOURCES})
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 target_link_libraries(main PRIVATE sfml-graphics)
