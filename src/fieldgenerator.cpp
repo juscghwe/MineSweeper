@@ -53,6 +53,7 @@ void FieldGenerator::placeMines(std::set<Position> mineFieldTwoD)
 {
     for (Position position : mineFieldTwoD) {
         fieldGrid_->at(position.row, position.column).isMine = true;
+        calculateAdjecentMines(position);
     };
 };
 
@@ -60,7 +61,12 @@ void FieldGenerator::placeMines(std::set<Position> mineFieldTwoD)
 void FieldGenerator::calculateAdjecentMines(Position position)
 {
     for (Position adjecent : adjecentCounter_) {
-        fieldGrid_->at(position.row + adjecent.row, position.column + adjecent.column)
-            .adjecentMines += 1;
+        try {
+            fieldGrid_->at(position.row + adjecent.row, position.column + adjecent.column)
+                .adjecentMines += 1;
+        } catch (const std::out_of_range& e) {
+            // ignore the exception and skip to the next adjecent Position
+            continue;
+        }
     }
 };

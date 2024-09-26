@@ -14,7 +14,9 @@ FieldVector::FieldVector(std::size_t rows, std::size_t columns, std::size_t mine
 
 CellStructure& FieldVector::at(size_t row, size_t column)
 {
-    isInvalidIndex(row, column);
+    if (isInvalidIndex(row, column)) {
+        throw std::out_of_range("Index out of bounds.\n");
+    };
     return fieldGrid_[row][column];
 }
 
