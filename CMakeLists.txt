@@ -16,7 +16,11 @@ FetchContent_Declare(SFML
     GIT_SHALLOW ON
     EXCLUDE_FROM_ALL
     SYSTEM)
+FetchContent_Declare(GoogleTest
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_TAG v1.15.2)
 FetchContent_MakeAvailable(SFML)
+FetchContent_MakeAvailable(GoogleTest)
 
 set(SOURCES
     src/main.cpp
