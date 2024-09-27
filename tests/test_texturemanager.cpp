@@ -7,7 +7,7 @@ constexpr int NUM_ADJECENT_TEXTURES = 8;
 class TextureManagerTest : public ::testing::TestWithParam<CellState>
 {
   protected:
-    TextureManager& textureManager = TextureManager::getInstance();
+    MineSweeper::TextureManager& textureManager = MineSweeper::TextureManager::getInstance();
 };
 
 TEST_P(TextureManagerTest, LoadsTextureForState)
@@ -30,10 +30,15 @@ TEST_F(TextureManagerTest, ThrowsForInvalidState)
 class TextureManagerAdjecentTest : public ::testing::TestWithParam<int>
 {
   protected:
-    TextureManager& textureManager = TextureManager::getInstance();
+    MineSweeper::TextureManager& textureManager = MineSweeper::TextureManager::getInstance();
 };
 
-TEST_P(TextureManagerAdjecentTest, LoadsTextureForAdjecent) {}
+TEST_P(TextureManagerAdjecentTest, LoadsTextureForAdjecent)
+{
+    int adjecentMines = GetParam();
+    EXPECT_NO_THROW(textureManager.getTexture(CellState::Adjecent, adjecentMines));
+    EXPECT_TRUE(textureManager.getTexture(CellState::Adjecent, adjecentMines).getSize().x > 0);
+}
 
 INSTANTIATE_TEST_SUITE_P(TextureAdjecentNumbers, TextureManagerAdjecentTest,
                          ::testing::Range(1, NUM_ADJECENT_TEXTURES));

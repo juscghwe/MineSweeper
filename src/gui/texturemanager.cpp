@@ -7,6 +7,7 @@
 
 #include "gui/texturemanager.hpp"
 
+namespace MineSweeper {
 TextureManager& TextureManager::getInstance()
 {
     static TextureManager instance;
@@ -62,7 +63,10 @@ std::string TextureManager::getTexturePath(const CellState kState)
             return "Flag";
         case CellState::Mine:
             return "Mine";
+        case CellState::Empty:
+            return "Empty";
         default:
             throw std::runtime_error("Asset not found for unknown state.");  // No path for Adjacent since it's dynamic
     }
 }
+}  // namespace MineSweeper

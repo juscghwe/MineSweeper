@@ -34,6 +34,7 @@ enum class CellState {
 const std::string ASSET_TILE_PATH = "assets/MineSweeperSprites/Tile";
 const std::string ASSET_TILE_TYPE = ".png";
 
+namespace MineSweeper {
 /**
  * @class TextureManager
  * @brief Singleton class for managing textures in the Minesweeper game.
@@ -88,5 +89,6 @@ class TextureManager
      */
     static std::string getTexturePath(const CellState kState);
 };
+};  // namespace MineSweeper
 
 #endif  // TEXTURE_MANAGER_H_
