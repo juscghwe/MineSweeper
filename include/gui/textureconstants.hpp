@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 
+namespace MineSweeper {
 /**
  * @brief Enumeration to represent the state of a cell.
  */
@@ -36,4 +37,5 @@ const std::map<const int, const std::string> ASSET_TILE_ADJECENTBOUND{{1, "asset
                                                                       {7, "assets/MineSweeperSprites/Tile7.png"},
                                                                       {8, "assets/MineSweeperSprites/Tile8.png"}};
 
+};  // namespace MineSweeper
 #endif  // TEXTURE_CONSTANTS_H_
