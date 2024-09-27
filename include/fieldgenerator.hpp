@@ -51,7 +51,7 @@ class FieldGenerator
      * @param limit `int` Number of unique numbers to generate.
      * @return `std::set<int>` Set of unique random numbers.
      */
-    const std::set<int> uniqueRandomNumbers(const int min, const int max, const int limit) const;
+    std::set<int> uniqueRandomNumbers(const int min, const int max, const int limit) const;
 
     /**
      * @private
@@ -59,8 +59,8 @@ class FieldGenerator
      * @param minePlacementOneD `std::set<int>` Linear position of the mines.
      * @return `std::set<Position>` Each `pair` represents one 2D coordinate of a mine.
      */
-    const std::set<Position> minePlacementTwoD(const std::set<int>& mineFieldOneD,
-                                               const std::size_t columns) const;
+    std::set<Position> minePlacementTwoD(const std::set<int>& mineFieldOneD,
+                                         const std::size_t columns) const;
 
     /**
      * @private

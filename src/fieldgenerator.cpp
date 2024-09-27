@@ -26,8 +26,8 @@ std::unique_ptr<MineSweeper::FieldVector> FieldGenerator::generateField()
 };
 
 //@private
-const std::set<int> FieldGenerator::uniqueRandomNumbers(const int min, const int max,
-                                                        const int limit) const
+std::set<int> FieldGenerator::uniqueRandomNumbers(const int min, const int max,
+                                                  const int limit) const
 {
     std::set<int> numbers;
     std::random_device randomDevice;
@@ -41,8 +41,8 @@ const std::set<int> FieldGenerator::uniqueRandomNumbers(const int min, const int
 };
 
 // @private
-const std::set<Position> FieldGenerator::minePlacementTwoD(const std::set<int>& mineFieldOneD,
-                                                           const std::size_t columns) const
+std::set<Position> FieldGenerator::minePlacementTwoD(const std::set<int>& mineFieldOneD,
+                                                     const std::size_t columns) const
 {
     std::set<Position> mineFieldTwoD;
     for (const int positionOneD : mineFieldOneD) {
