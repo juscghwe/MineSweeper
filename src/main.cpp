@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+namespace MineSweeper {
 int main()
 {
     // generate playfield
@@ -33,3 +34,4 @@ int main()
     // exit program
     return 0;
 }
+}  // namespace MineSweeper

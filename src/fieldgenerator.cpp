@@ -8,7 +8,10 @@
 #include "fieldgenerator.hpp"
 #include <random>
 
-FieldGenerator::FieldGenerator(std::size_t rows, std::size_t columns, std::size_t mines)
+namespace MineSweeper {
+namespace Generation {
+FieldGenerator::FieldGenerator(const std::size_t rows, const std::size_t columns,
+                               const std::size_t mines)
     : rows_(rows), columns_(columns), mines_(mines)
 {}
 
@@ -23,7 +26,8 @@ std::unique_ptr<FieldVector> FieldGenerator::generateField()
 };
 
 //@private
-std::set<int> FieldGenerator::uniqueRandomNumbers(int min, int max, int limit)
+const std::set<int> FieldGenerator::uniqueRandomNumbers(const int min, const int max,
+                                                        const int limit) const
 {
     std::set<int> numbers;
     std::random_device randomDevice;
@@ -37,7 +41,7 @@ std::set<int> FieldGenerator::uniqueRandomNumbers(int min, int max, int limit)
 };
 
 // @private
-std::set<Position> FieldGenerator::minePlacementTwoD(std::set<int> mineFieldOneD)
+const std::set<Position> FieldGenerator::minePlacementTwoD(const std::set<int>& mineFieldOneD) const
 {
     std::set<Position> mineFieldTwoD;
     for (int positionOneD : mineFieldOneD) {
@@ -49,7 +53,7 @@ std::set<Position> FieldGenerator::minePlacementTwoD(std::set<int> mineFieldOneD
 };
 
 // @private
-void FieldGenerator::placeMines(std::set<Position> mineFieldTwoD)
+void FieldGenerator::placeMines(const std::set<Position>& mineFieldTwoD)
 {
     for (Position position : mineFieldTwoD) {
         fieldGrid_->at(position.row, position.column).isMine = true;
@@ -58,7 +62,7 @@ void FieldGenerator::placeMines(std::set<Position> mineFieldTwoD)
 };
 
 // @private
-void FieldGenerator::calculateAdjecentMines(Position position)
+void FieldGenerator::calculateAdjecentMines(const Position& position)
 {
     for (Position adjecent : adjecentCounter_) {
         try {
@@ -70,3 +74,5 @@ void FieldGenerator::calculateAdjecentMines(Position position)
         }
     }
 };
+}  // namespace Generation
+}  // namespace MineSweeper

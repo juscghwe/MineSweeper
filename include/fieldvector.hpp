@@ -11,10 +11,11 @@
 #include <stdexcept>
 #include <vector>
 
+namespace MineSweeper {
 class FieldVector
 {
   public:
-    FieldVector(std::size_t rows, std::size_t columns, std::size_t mines);
+    FieldVector(const std::size_t rows, const std::size_t columns, const std::size_t mines);
 
     /**
      * @brief Get the entire cell at a specific point in the grid.
@@ -29,20 +30,20 @@ class FieldVector
      * @brief Get number of rows in the grid.
      * @return `size_t`
      */
-    size_t rows() const;
+    const size_t rows() const;
 
     /**
      * @brief Get number of columns in the grid.
      * @return `size_t`
      */
-    size_t columns() const;
+    const size_t columns() const;
 
     const std::vector<std::vector<CellStructure>>& getFieldGrid() const { return fieldGrid_; }
 
   private:
-    std::size_t rows_;
-    std::size_t columns_;
-    std::size_t mines_;
+    const std::size_t rows_;
+    const std::size_t columns_;
+    const std::size_t mines_;
     std::vector<std::vector<CellStructure>> fieldGrid_;
 
     /**
@@ -51,7 +52,8 @@ class FieldVector
      * @return `bool`
      * @throws `std::out_of_range` error if the pointed at cell is out of bounds.
      */
-    bool isInvalidIndex(size_t row, size_t column) const;
+    const bool isInvalidIndex(const size_t row, const size_t column) const;
 };
+};  // namespace MineSweeper
 
 #endif  // FIELD_VECTOR_H_

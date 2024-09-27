@@ -6,7 +6,8 @@
 
 #include "fieldvector.hpp"
 
-FieldVector::FieldVector(std::size_t rows, std::size_t columns, std::size_t mines)
+namespace MineSweeper {
+FieldVector::FieldVector(const std::size_t rows, const std::size_t columns, const std::size_t mines)
     : rows_(rows), columns_(columns), mines_(mines)
 {
     fieldGrid_.resize(rows, std::vector<CellStructure>(columns));
@@ -20,18 +21,19 @@ CellStructure& FieldVector::at(size_t row, size_t column)
     return fieldGrid_[row][column];
 }
 
-size_t FieldVector::rows() const
+const size_t FieldVector::rows() const
 {
     return fieldGrid_.size();
 }
 
-size_t FieldVector::columns() const
+const size_t FieldVector::columns() const
 {
     return fieldGrid_[0].size();
 }
 
 // @private
-bool FieldVector::isInvalidIndex(size_t row, size_t column) const
+const bool FieldVector::isInvalidIndex(const size_t row, const size_t column) const
 {
     return (row >= rows() || column >= columns());
 }
+}  // namespace MineSweeper
