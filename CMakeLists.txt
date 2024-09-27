@@ -20,8 +20,8 @@ FetchContent_MakeAvailable(SFML)
 
 set(SOURCES
     src/main.cpp
-    src/fieldvector.cpp
-    src/fieldgenerator.cpp
+    src/utility/fieldvector.cpp
+    src/generator/fieldgenerator.cpp
     # Add other source files as needed
 )
 add_executable(main ${SOURCES})
