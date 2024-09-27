@@ -33,7 +33,7 @@ sf::Texture& TextureManager::getTexture(const CellState kState, const int kAdjec
 sf::Texture TextureManager::loadTextureForAdjecent(const int kAdjecentMines)
 {
     sf::Texture texture;
-    const std::string kFilename = ASSET_TILE_PATH + std::to_string(kAdjecentMines) + ASSET_TILE_TYPE;
+    const std::string kFilename = ASSET_TILE_ADJECENTBOUND.at(kAdjecentMines);
     if (!texture.loadFromFile(kFilename)) {
         throw std::runtime_error("Asset not found: ");
     }
@@ -45,28 +45,11 @@ sf::Texture TextureManager::loadTextureForAdjecent(const int kAdjecentMines)
 sf::Texture TextureManager::loadTextureForState(const CellState kState)
 {
     sf::Texture texture;
-    const std::string kFilename = ASSET_TILE_PATH + getTexturePath(kState) + ASSET_TILE_TYPE;
+    const std::string kFilename = ASSET_TILE_STATEBOUND.at(kState);
     if (!texture.loadFromFile(kFilename)) {
         throw std::runtime_error("Asset not found: " + kFilename);
     }
     texture.setSmooth(true);
     return std::move(texture);
-}
-
-// @private
-std::string TextureManager::getTexturePath(const CellState kState)
-{
-    switch (kState) {
-        case CellState::Unknown:
-            return "Unknown";
-        case CellState::Flagged:
-            return "Flag";
-        case CellState::Mine:
-            return "Mine";
-        case CellState::Empty:
-            return "Empty";
-        default:
-            throw std::runtime_error("Asset not found for unknown state.");  // No path for Adjacent since it's dynamic
-    }
 }
 }  // namespace MineSweeper

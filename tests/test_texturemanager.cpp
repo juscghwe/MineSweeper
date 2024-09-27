@@ -22,7 +22,6 @@ INSTANTIATE_TEST_SUITE_P(TextureStates, TextureManagerTest,
 
 TEST_F(TextureManagerTest, ThrowsForInvalidState)
 {
-    // Test invalid cases and ensure correct errors are thrown
     EXPECT_THROW(textureManager.getTexture(static_cast<CellState>(999)), std::runtime_error);
 }
 
@@ -42,3 +41,8 @@ TEST_P(TextureManagerAdjecentTest, LoadsTextureForAdjecent)
 
 INSTANTIATE_TEST_SUITE_P(TextureAdjecentNumbers, TextureManagerAdjecentTest,
                          ::testing::Range(1, NUM_ADJECENT_TEXTURES));
+
+TEST_F(TextureManagerAdjecentTest, ThrowsForInvalidState)
+{
+    EXPECT_THROW(textureManager.getTexture(CellState::Adjecent, 99), std::runtime_error);
+}

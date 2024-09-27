@@ -12,27 +12,11 @@
 #ifndef TEXTURE_MANAGER_H
 #define TEXTURE_MANAGER_H
 
+#include "gui/textureconstants.hpp"
 #include <SFML/Graphics.hpp>
 #include <map>
 #include <stdexcept>
 #include <string>
-
-/**
- * @brief Enumeration to represent the state of a cell.
- */
-enum class CellState {
-    Unknown,  ///< The state is unknown (covered).
-    Flagged,  ///< The cell is flagged.
-    Mine,     ///< The cell contains a mine.
-    Empty,    ///< The cell is empty (no adjacent mines).
-    Adjecent  ///< The cell is adjacent to a mine. Uses a dynamic mine count.
-};
-
-/**
- * @brief Path constants for loading texture assets.
- */
-const std::string ASSET_TILE_PATH = "assets/MineSweeperSprites/Tile";
-const std::string ASSET_TILE_TYPE = ".png";
 
 namespace MineSweeper {
 /**
@@ -81,13 +65,6 @@ class TextureManager
      * @return The loaded `sf::Texture` object.
      */
     sf::Texture loadTextureForState(const CellState kState);
-
-    /**
-     * @brief Gets the file path for the texture based on the cell state.
-     * @param kState `CellState` The state of the cell.
-     * @return `String` representing the file path.
-     */
-    static std::string getTexturePath(const CellState kState);
 };
 };  // namespace MineSweeper
 
