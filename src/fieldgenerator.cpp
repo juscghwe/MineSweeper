@@ -29,10 +29,15 @@ std::unique_ptr<MineSweeper::FieldVector> FieldGenerator::generateField()
 //@private
 std::set<int> FieldGenerator::uniqueRandomNumbers(const int min, const int max, const int limit) const
 {
+    if (limit <= 0 || limit > (max - min + 1)) {
+        throw std::invalid_argument("Limit must be greater than 0 and less than or equal to the range.");
+    }
+
     std::set<int> numbers;
     std::random_device randomDevice;
-    const std::mt19937 generator(randomDevice());
+    std::mt19937 generator(randomDevice());
     std::uniform_int_distribution<int> dist(min, max);
+
     while (numbers.size() < limit) {
         const int randomNumber = dist(generator);
         numbers.insert(randomNumber);

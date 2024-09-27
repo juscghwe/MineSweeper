@@ -70,6 +70,7 @@ class FieldGenerator
      * @param max `int` The upper bound of the range (inclusive).
      * @param limit `int` The number of unique random numbers to generate.
      * @return `std::set<int>` A set containing the generated unique random numbers.
+     * @throws `std::invalid_argument` if the `limit` is not within the range of `min` and `max`.
      */
     std::set<int> uniqueRandomNumbers(const int min, const int max, const int limit) const;
 
