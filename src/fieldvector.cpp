@@ -1,6 +1,7 @@
 /**
  * @file fieldvector.cpp
  * @author juscghwe <a href = "https://github.com/juscghwe">GitHub<\a>
+ * @brief Defines the `FieldVector` class, representing a 2D grid of cells for the Minesweeper game.
  * @headerfile "include/fieldvector.hpp"
  */
 

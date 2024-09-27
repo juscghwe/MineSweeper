@@ -1,8 +1,8 @@
 /**
  * @file fieldgenerator.cpp
  * @author juscghwe <a href = "https://github.com/juscghwe">GitHub<\a>
+ * @brief Defines the `FieldGenerator` class, which generates a minefield for the Minesweeper game.
  * @headerfile "include/generatefield.hpp"
- * @brief Defines the FieldGenerator class, which generates a minefield for the Minesweeper game.
  */
 
 #include "fieldgenerator.hpp"

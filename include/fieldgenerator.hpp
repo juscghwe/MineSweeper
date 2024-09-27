@@ -20,7 +20,7 @@ struct Position {
     const int column;  ///< `int` Column index of the position in the grid.
 
     /**
-     * @brief Compares two `Position` objects for ordering. Necessary for `set<Position>`.
+     * @brief Compares two `Position` objects for ordering. Necessary for `std::set<Position>`.
      * @param other The other `Position` to compare against.
      * @return `bool` `true` if this `Position` is less than the other, `false` otherwise.
      */
@@ -30,18 +30,22 @@ struct Position {
     }
 };
 
-// A constant `set<Position>` representing the relative positions of adjacent fields.
+// A constant `std::set<Position>` representing the relative positions of adjacent fields.
 const std::set<Position> ADJECENT_FIELDS_RELATIVE =
     {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
 
+/**
+ * @class `FieldGenerator`
+ * @brief Generates a 2D grid of cells in the Minesweeper game.
+ */
 class FieldGenerator
 {
   public:
     /**
      * @brief Constructs a `FieldGenerator` object with specified dimensions and number of mines.
-     * @param rows `size_t` The number of rows in the minefield.
-     * @param columns `size_t` The number of columns in the minefield.
-     * @param mines `size_t` The number of mines to place in the minefield.
+     * @param rows `std::size_t` The number of rows in the minefield.
+     * @param columns `std::size_t` The number of columns in the minefield.
+     * @param mines `std::size_t` The number of mines to place in the minefield.
      */
     FieldGenerator(const std::size_t rows, const std::size_t columns, const std::size_t mines);
 
@@ -53,9 +57,9 @@ class FieldGenerator
     std::unique_ptr<MineSweeper::FieldVector> generateField();
 
   private:
-    const std::size_t rows_;     ///< `size_t` The number of rows in the minefield.
-    const std::size_t columns_;  ///< `size_t` The number of columns in the minefield.
-    const std::size_t mines_;    ///< `size_t` The number of mines in the minefield.
+    const std::size_t rows_;     ///< `std::size_t` The number of rows in the minefield.
+    const std::size_t columns_;  ///< `std::size_t` The number of columns in the minefield.
+    const std::size_t mines_;    ///< `std::size_t` The number of mines in the minefield.
     std::unique_ptr<MineSweeper::FieldVector>
         fieldGrid_;  ///< `unique_ptr<MineSweeper::FieldVector>` Unique pointer to the minefield grid.
 
