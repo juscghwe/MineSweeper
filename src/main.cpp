@@ -2,21 +2,23 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-namespace MineSweeper {
-
 int main()
 {
-    // generate playfield
+    // Generation
     MineSweeper::Generation::FieldGenerator fieldGenerator(10, 10, 4);
-    std::unique_ptr<FieldVector> playfield = fieldGenerator.generateField();
-    for (std::vector<CellStructure> row : playfield->getFieldGrid()) {
-        for (CellStructure column : row) {
+    std::unique_ptr<MineSweeper::FieldVector> playfield = fieldGenerator.generateField();
+
+    // testing only
+    // TODO: Remove
+    for (std::vector<MineSweeper::CellStructure> row : playfield->getFieldGrid()) {
+        for (MineSweeper::CellStructure column : row) {
             std::cout << (column.isMine ? "X" : std::to_string(column.adjecentMines));
         }
         std::cout << "\n";
     }
 
     // setting up SFML (according to https://github.com/SFML/cmake-sfml-project/blob/a9b227e6575ba2509139208c2ca31f9b54004b40/src/main.cpp)
+    // GUI / Gameloop
     auto window = sf::RenderWindow{{500u, 500u}, "MineSweeper"};
     window.setFramerateLimit(60);
     while (window.isOpen()) {
@@ -35,4 +37,3 @@ int main()
     // exit program
     return 0;
 }
-}  // namespace MineSweeper
