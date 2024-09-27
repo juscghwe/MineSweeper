@@ -1,3 +1,11 @@
+/**
+ * @file main.cpp
+ * @author juscghwe <a href = "https://github.com/juscghwe">GitHub<\a>
+ * @brief Main for MineSweeper.
+ * @headerfile "include/generator/fieldgenerator.hpp"
+ * @headerfile "SFML/Graphics.hpp"
+ */
+
 #include "fieldgenerator.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
