@@ -23,7 +23,7 @@ INSTANTIATE_TEST_SUITE_P(TextureStates, TextureManagerTest,
 
 TEST_F(TextureManagerTest, ThrowsForInvalidState)
 {
-    EXPECT_THROW(textureManager.getTexture(static_cast<MineSweeper::CellState>(999)), std::runtime_error);
+    EXPECT_THROW(textureManager.getTexture(static_cast<MineSweeper::CellState>(999)), std::out_of_range);
 }
 
 // Test loading textures for the adjecent fields
@@ -45,5 +45,5 @@ INSTANTIATE_TEST_SUITE_P(TextureAdjecentNumbers, TextureManagerAdjecentTest,
 
 TEST_F(TextureManagerAdjecentTest, ThrowsForInvalidState)
 {
-    EXPECT_THROW(textureManager.getTexture(MineSweeper::CellState::Adjecent, 99), std::runtime_error);
+    EXPECT_THROW(textureManager.getTexture(MineSweeper::CellState::Adjecent, 99), std::out_of_range);
 }
