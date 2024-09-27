@@ -4,7 +4,7 @@
 constexpr int NUM_ADJECENT_TEXTURES = 8;
 
 // Test loading textures for different states
-class TextureManagerTest : public ::testing::TestWithParam<MineSweeper::CellState>
+class TextureManagerTest : public ::testing::TestWithParam<MineSweeper::GUI::CellState>
 {
   protected:
     MineSweeper::TextureManager& textureManager = MineSweeper::TextureManager::getInstance();
@@ -12,18 +12,18 @@ class TextureManagerTest : public ::testing::TestWithParam<MineSweeper::CellStat
 
 TEST_P(TextureManagerTest, LoadsTextureForState)
 {
-    MineSweeper::CellState state = GetParam();
+    MineSweeper::GUI::CellState state = GetParam();
     EXPECT_NO_THROW(textureManager.getTexture(state));
     EXPECT_TRUE(textureManager.getTexture(state).getSize().x > 0);
 }
 
 INSTANTIATE_TEST_SUITE_P(TextureStates, TextureManagerTest,
-                         ::testing::Values(MineSweeper::CellState::Flagged, MineSweeper::CellState::Mine,
-                                           MineSweeper::CellState::Unknown, MineSweeper::CellState::Empty));
+                         ::testing::Values(MineSweeper::GUI::CellState::Flagged, MineSweeper::GUI::CellState::Mine,
+                                           MineSweeper::GUI::CellState::Unknown, MineSweeper::GUI::CellState::Empty));
 
 TEST_F(TextureManagerTest, ThrowsForInvalidState)
 {
-    EXPECT_THROW(textureManager.getTexture(static_cast<MineSweeper::CellState>(999)), std::out_of_range);
+    EXPECT_THROW(textureManager.getTexture(static_cast<MineSweeper::GUI::CellState>(999)), std::out_of_range);
 }
 
 // Test loading textures for the adjecent fields
@@ -36,8 +36,8 @@ class TextureManagerAdjecentTest : public ::testing::TestWithParam<int>
 TEST_P(TextureManagerAdjecentTest, LoadsTextureForAdjecent)
 {
     int adjecentMines = GetParam();
-    EXPECT_NO_THROW(textureManager.getTexture(MineSweeper::CellState::Adjecent, adjecentMines));
-    EXPECT_TRUE(textureManager.getTexture(MineSweeper::CellState::Adjecent, adjecentMines).getSize().x > 0);
+    EXPECT_NO_THROW(textureManager.getTexture(MineSweeper::GUI::CellState::Adjecent, adjecentMines));
+    EXPECT_TRUE(textureManager.getTexture(MineSweeper::GUI::CellState::Adjecent, adjecentMines).getSize().x > 0);
 }
 
 INSTANTIATE_TEST_SUITE_P(TextureAdjecentNumbers, TextureManagerAdjecentTest,
@@ -45,5 +45,5 @@ INSTANTIATE_TEST_SUITE_P(TextureAdjecentNumbers, TextureManagerAdjecentTest,
 
 TEST_F(TextureManagerAdjecentTest, ThrowsForInvalidState)
 {
-    EXPECT_THROW(textureManager.getTexture(MineSweeper::CellState::Adjecent, 99), std::out_of_range);
+    EXPECT_THROW(textureManager.getTexture(MineSweeper::GUI::CellState::Adjecent, 99), std::out_of_range);
 }

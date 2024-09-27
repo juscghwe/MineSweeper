@@ -24,6 +24,7 @@ FetchContent_MakeAvailable(GoogleTest)
 
 # Add includes
 include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/constants)
 
 # Building release
 set(SOURCES

@@ -12,7 +12,7 @@
 #ifndef TEXTURE_MANAGER_H
 #define TEXTURE_MANAGER_H
 
-#include "gui/textureconstants.hpp"
+#include "guiconstants.hpp"
 #include <SFML/Graphics.hpp>
 #include <map>
 #include <stdexcept>
@@ -42,11 +42,11 @@ class TextureManager
      * @param kAdjecentMines `int=0` The number of adjacent mines (only relevant for Adjecent state).
      * @return `sf::Texture` Reference to the texture for the given state.
      */
-    sf::Texture& getTexture(const CellState kState, const int kAdjecentMines = 0);
+    sf::Texture& getTexture(const GUI::CellState kState, const int kAdjecentMines = 0);
 
   private:
-    std::map<CellState, sf::Texture> textures_;    ///< Map for storing textures based on CellState.
-    std::map<int, sf::Texture> adjecentTextures_;  ///< Map for storing textures based on adjacent mine count.
+    std::map<GUI::CellState, sf::Texture> textures_;  ///< Map for storing textures based on CellState.
+    std::map<int, sf::Texture> adjecentTextures_;     ///< Map for storing textures based on adjacent mine count.
 
     TextureManager() {};                             // Private Constructor to prevent instancing.
     TextureManager(TextureManager const&) = delete;  // Prevent copies
@@ -64,7 +64,7 @@ class TextureManager
      * @param kState `CellState` The state of the cell.
      * @return The loaded `sf::Texture` object.
      */
-    sf::Texture loadTextureForState(const CellState kState);
+    sf::Texture loadTextureForState(const GUI::CellState kState);
 };
 };  // namespace MineSweeper
 
