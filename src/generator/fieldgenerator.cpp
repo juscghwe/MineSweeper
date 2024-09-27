@@ -5,7 +5,7 @@
  * @headerfile "include/generatefield.hpp"
  */
 
-#include "fieldgenerator.hpp"
+#include "generator/fieldgenerator.hpp"
 #include <random>
 
 namespace MineSweeper {

@@ -6,7 +6,7 @@
  * @headerfile "SFML/Graphics.hpp"
  */
 
-#include "fieldgenerator.hpp"
+#include "generator/fieldgenerator.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 

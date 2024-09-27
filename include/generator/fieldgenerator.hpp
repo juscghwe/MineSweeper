@@ -7,7 +7,7 @@
 #ifndef FIELD_GENERATOR_H
 #define FIELD_GENERATOR_H
 
-#include "fieldvector.hpp"
+#include "utility/fieldvector.hpp"
 #include <memory>
 #include <set>
 

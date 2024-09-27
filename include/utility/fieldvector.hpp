@@ -8,7 +8,7 @@
 #ifndef FIELD_VECTOR_H
 #define FIELD_VECTOR_H
 
-#include "cellstruct.hpp"
+#include "utility/cellstruct.hpp"
 #include <stdexcept>
 #include <vector>
 

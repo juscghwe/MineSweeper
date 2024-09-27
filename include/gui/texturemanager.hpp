@@ -10,7 +10,7 @@
  */
 
 #ifndef TEXTURE_MANAGER_H
-#define SPRITES_HOLDER_H
+#define TEXTURE_MANAGER_H
 
 #include <SFML/Graphics.hpp>
 #include <map>
@@ -63,7 +63,9 @@ class TextureManager
     std::map<CellState, sf::Texture> textures_;    ///< Map for storing textures based on CellState.
     std::map<int, sf::Texture> adjecentTextures_;  ///< Map for storing textures based on adjacent mine count.
 
-    TextureManager();  // Private Constructor to prevent instancing.
+    TextureManager() {};                             // Private Constructor to prevent instancing.
+    TextureManager(TextureManager const&) = delete;  // Prevent copies
+    void operator=(TextureManager const&) = delete;  // Prevent assignment
 
     /**
      * @brief Loads the texture for a cell with adjacent mines.
@@ -87,4 +89,4 @@ class TextureManager
     static std::string getTexturePath(const CellState kState);
 };
 
-#endif  // SPRITES_HOLDER_H_
+#endif  // TEXTURE_MANAGER_H_

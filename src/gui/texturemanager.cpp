@@ -5,7 +5,7 @@
  * @headerfile "include/gui/texturemanager.hpp"
  */
 
-#include "texturemanager.hpp"
+#include "gui/texturemanager.hpp"
 
 TextureManager& TextureManager::getInstance()
 {
@@ -13,7 +13,7 @@ TextureManager& TextureManager::getInstance()
     return instance;
 }
 
-sf::Texture& TextureManager::getTexture(const CellState kState, const int kAdjecentMines = 0)
+sf::Texture& TextureManager::getTexture(const CellState kState, const int kAdjecentMines)
 {
     if (kState == CellState::Adjecent) {
         if (adjecentTextures_.find(kAdjecentMines) == adjecentTextures_.end()) {
@@ -27,9 +27,6 @@ sf::Texture& TextureManager::getTexture(const CellState kState, const int kAdjec
         return textures_[kState];
     }
 }
-
-// @private
-TextureManager::TextureManager() = default;
 
 // @private
 sf::Texture TextureManager::loadTextureForAdjecent(const int kAdjecentMines)
