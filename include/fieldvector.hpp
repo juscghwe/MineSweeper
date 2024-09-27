@@ -24,7 +24,7 @@ class FieldVector
      * @return `CellStructure`
      * @throws `std::out_of_range` error if the pointed at cell is out of bounds.
      */
-    CellStructure& at(size_t row, size_t column);
+    MineSweeper::CellStructure& at(size_t row, size_t column);
 
     /**
      * @brief Get number of rows in the grid.
@@ -38,13 +38,16 @@ class FieldVector
      */
     const size_t columns() const;
 
-    const std::vector<std::vector<CellStructure>>& getFieldGrid() const { return fieldGrid_; }
+    const std::vector<std::vector<MineSweeper::CellStructure>>& getFieldGrid() const
+    {
+        return fieldGrid_;
+    }
 
   private:
     const std::size_t rows_;
     const std::size_t columns_;
     const std::size_t mines_;
-    std::vector<std::vector<CellStructure>> fieldGrid_;
+    std::vector<std::vector<MineSweeper::CellStructure>> fieldGrid_;
 
     /**
      * @private

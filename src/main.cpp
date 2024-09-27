@@ -3,10 +3,11 @@
 #include <iostream>
 
 namespace MineSweeper {
+
 int main()
 {
     // generate playfield
-    FieldGenerator fieldGenerator(10, 10, 4);
+    MineSweeper::Generation::FieldGenerator fieldGenerator(10, 10, 4);
     std::unique_ptr<FieldVector> playfield = fieldGenerator.generateField();
     for (std::vector<CellStructure> row : playfield->getFieldGrid()) {
         for (CellStructure column : row) {

@@ -10,21 +10,22 @@
 #include <memory>
 #include <set>
 
+namespace MineSweeper {
+namespace Generation {
+
 struct Position {
     const int row;
     const int column;
 
-    bool operator<(const Position& other) const
+    constexpr bool operator<(const Position& other) const
     {
-        if (row == other.row) {
-            return column < other.column;
-        }
-        return row < other.row;
+        return (row == other.row) ? (column < other.column) : (row < other.row);
     }
 };
 
-namespace MineSweeper {
-namespace Generation {
+const std::set<Position> adjecentCounter_ =
+    {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
+
 class FieldGenerator
 {
   public:
@@ -40,9 +41,7 @@ class FieldGenerator
     const std::size_t rows_;
     const std::size_t columns_;
     const std::size_t mines_;
-    std::unique_ptr<FieldVector> fieldGrid_;
-    const std::set<Position> adjecentCounter_ =
-        {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
+    std::unique_ptr<MineSweeper::FieldVector> fieldGrid_;
 
     /**
      * @private
@@ -60,7 +59,8 @@ class FieldGenerator
      * @param minePlacementOneD `std::set<int>` Linear position of the mines.
      * @return `std::set<Position>` Each `pair` represents one 2D coordinate of a mine.
      */
-    const std::set<Position> minePlacementTwoD(const std::set<int>& mineFieldOneD) const;
+    const std::set<Position> minePlacementTwoD(const std::set<int>& mineFieldOneD,
+                                               const std::size_t columns) const;
 
     /**
      * @private

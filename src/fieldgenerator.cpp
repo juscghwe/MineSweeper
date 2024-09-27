@@ -15,11 +15,11 @@ FieldGenerator::FieldGenerator(const std::size_t rows, const std::size_t columns
     : rows_(rows), columns_(columns), mines_(mines)
 {}
 
-std::unique_ptr<FieldVector> FieldGenerator::generateField()
+std::unique_ptr<MineSweeper::FieldVector> FieldGenerator::generateField()
 {
-    fieldGrid_ = std::make_unique<FieldVector>(rows_, columns_, mines_);
-    std::set<int> mineFieldOneD = uniqueRandomNumbers(0, rows_ * columns_ - 1, mines_);
-    std::set<Position> mineFieldTwoD = minePlacementTwoD(mineFieldOneD);
+    fieldGrid_ = std::make_unique<MineSweeper::FieldVector>(rows_, columns_, mines_);
+    const std::set<int> mineFieldOneD = uniqueRandomNumbers(0, rows_ * columns_ - 1, mines_);
+    const std::set<Position> mineFieldTwoD = minePlacementTwoD(mineFieldOneD, columns_);
     placeMines(mineFieldTwoD);
 
     return std::move(fieldGrid_);
@@ -31,22 +31,23 @@ const std::set<int> FieldGenerator::uniqueRandomNumbers(const int min, const int
 {
     std::set<int> numbers;
     std::random_device randomDevice;
-    std::mt19937 generator(randomDevice());
+    const std::mt19937 generator(randomDevice());
     std::uniform_int_distribution<int> dist(min, max);
     while (numbers.size() < limit) {
-        int randomNumber = dist(generator);
+        const int randomNumber = dist(generator);
         numbers.insert(randomNumber);
     }
     return numbers;
 };
 
 // @private
-const std::set<Position> FieldGenerator::minePlacementTwoD(const std::set<int>& mineFieldOneD) const
+const std::set<Position> FieldGenerator::minePlacementTwoD(const std::set<int>& mineFieldOneD,
+                                                           const std::size_t columns) const
 {
     std::set<Position> mineFieldTwoD;
-    for (int positionOneD : mineFieldOneD) {
-        int row = positionOneD / columns_;
-        int column = positionOneD % columns_;
+    for (const int positionOneD : mineFieldOneD) {
+        const int row = positionOneD / columns;
+        const int column = positionOneD % columns;
         mineFieldTwoD.insert(Position{row, column});
     }
     return mineFieldTwoD;
@@ -55,7 +56,7 @@ const std::set<Position> FieldGenerator::minePlacementTwoD(const std::set<int>& 
 // @private
 void FieldGenerator::placeMines(const std::set<Position>& mineFieldTwoD)
 {
-    for (Position position : mineFieldTwoD) {
+    for (const Position position : mineFieldTwoD) {
         fieldGrid_->at(position.row, position.column).isMine = true;
         calculateAdjecentMines(position);
     };
@@ -64,7 +65,7 @@ void FieldGenerator::placeMines(const std::set<Position>& mineFieldTwoD)
 // @private
 void FieldGenerator::calculateAdjecentMines(const Position& position)
 {
-    for (Position adjecent : adjecentCounter_) {
+    for (const Position adjecent : adjecentCounter_) {
         try {
             fieldGrid_->at(position.row + adjecent.row, position.column + adjecent.column)
                 .adjecentMines += 1;
