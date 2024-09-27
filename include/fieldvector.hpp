@@ -30,13 +30,13 @@ class FieldVector
      * @brief Get number of rows in the grid.
      * @return `size_t`
      */
-    const size_t rows() const;
+    size_t rows() const;
 
     /**
      * @brief Get number of columns in the grid.
      * @return `size_t`
      */
-    const size_t columns() const;
+    size_t columns() const;
 
     const std::vector<std::vector<MineSweeper::CellStructure>>& getFieldGrid() const
     {
@@ -55,7 +55,7 @@ class FieldVector
      * @return `bool`
      * @throws `std::out_of_range` error if the pointed at cell is out of bounds.
      */
-    const bool isInvalidIndex(const size_t row, const size_t column) const;
+    bool isInvalidIndex(const size_t row, const size_t column) const;
 };
 };  // namespace MineSweeper
 

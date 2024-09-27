@@ -21,18 +21,18 @@ MineSweeper::CellStructure& FieldVector::at(size_t row, size_t column)
     return fieldGrid_[row][column];
 }
 
-const size_t FieldVector::rows() const
+size_t FieldVector::rows() const
 {
     return fieldGrid_.size();
 }
 
-const size_t FieldVector::columns() const
+size_t FieldVector::columns() const
 {
     return fieldGrid_[0].size();
 }
 
 // @private
-const bool FieldVector::isInvalidIndex(const size_t row, const size_t column) const
+bool FieldVector::isInvalidIndex(const size_t row, const size_t column) const
 {
     return (row >= rows() || column >= columns());
 }
