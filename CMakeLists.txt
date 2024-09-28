@@ -22,18 +22,32 @@ FetchContent_Declare(GoogleTest
 FetchContent_MakeAvailable(SFML)
 FetchContent_MakeAvailable(GoogleTest)
 
+# Add includes
+include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/constants)
+
+# Building release
 set(SOURCES
     src/main.cpp
-    src/fieldvector.cpp
-    src/fieldgenerator.cpp
+    src/utility/fieldvector.cpp
+    src/generator/fieldgenerator.cpp
+    src/gui/texturemanager.cpp
     # Add other source files as needed
 )
 add_executable(main ${SOURCES})
-include_directories(${CMAKE_SOURCE_DIR}/include)
-
 target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)
 set_target_properties(main PROPERTIES OUTPUT_NAME "MineSweeper")
+
+# Building test
+set(TESTSOURCES
+    tests/test_texturemanager.cpp
+    src/gui/texturemanager.cpp
+)
+enable_testing()
+add_executable(test_texturemanager ${TESTSOURCES})
+target_link_libraries(test_texturemanager PRIVATE gtest gtest_main sfml-graphics)
+add_test(NAME test_texturemanager COMMAND test_texturemanager WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 
 # Clang-tidy
 set(CMAKE_CXX_CLANG_TIDY "C:/msys64/ucrt64/bin/clang-tidy.exe;-checks=*,-clang-analyzer-alpha*")

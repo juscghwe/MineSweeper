@@ -8,7 +8,7 @@
 #ifndef FIELD_VECTOR_H
 #define FIELD_VECTOR_H
 
-#include "cellstruct.hpp"
+#include "utility/cellstruct.hpp"
 #include <stdexcept>
 #include <vector>
 
@@ -33,10 +33,10 @@ class FieldVector
      * @brief Accesses the cell at a specific grid position.
      * @param row `size_t` The row index of the cell.
      * @param column `size_t` The column index of the cell.
-     * @return A reference to the `MineSweeper::CellStructure` at the specified position.
+     * @return A reference to the `MineSweeper::CellStruct` at the specified position.
      * @throws `std::out_of_range` if the specified indices are out of bounds.
      */
-    MineSweeper::CellStructure& at(size_t row, size_t column);
+    MineSweeper::CellStruct& at(size_t row, size_t column);
 
     /**
      * @brief Retrieves the number of rows in the grid.
@@ -52,16 +52,16 @@ class FieldVector
 
     /**
      * @brief Retrieves the entire field grid.
-     * @return A `const std::vector<std::vector<MineSweeper::CellStructure>>&` representing the grid.
+     * @return A `const std::vector<std::vector<MineSweeper::CellStruct>>&` representing the grid.
      */
-    const std::vector<std::vector<MineSweeper::CellStructure>>& getFieldGrid() const { return fieldGrid_; }
+    const std::vector<std::vector<MineSweeper::CellStruct>>& getFieldGrid() const { return fieldGrid_; }
 
   private:
     const std::size_t rows_;     ///< `size_t` The number of rows in the grid.
     const std::size_t columns_;  ///< `size_t` The number of columns in the grid.
     const std::size_t mines_;    ///< `size_t` The number of mines in the grid.
-    std::vector<std::vector<MineSweeper::CellStructure>>
-        fieldGrid_;  ///< `std::vector<std::vector<MineSweeper::CellStructure>>` The grid of cells.
+    std::vector<std::vector<MineSweeper::CellStruct>>
+        fieldGrid_;  ///< `std::vector<std::vector<MineSweeper::CellStruct>>` The grid of cells.
 
     /**
      * @brief Validates if the specified indices are valid for the grid.

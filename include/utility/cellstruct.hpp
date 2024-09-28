@@ -1,7 +1,7 @@
 /**
  * @file cellstruct.hpp
  * @author juscghwe <a href = "https://github.com/juscghwe">GitHub<\a>
- * @brief Defines the `CellStructure` for the Minesweeper game, representing the state of a cell in the minefield.
+ * @brief Defines the `CellStruct` for the Minesweeper game, representing the state of a cell in the minefield.
  */
 
 #ifndef CELL_STRUCTURE_H
@@ -12,10 +12,10 @@
 namespace MineSweeper {
 
 /**
- * @struct CellStructure
+ * @struct CellStruct
  * @brief Represents the state of a cell in the Minesweeper game.
  */
-struct CellStructure {
+struct CellStruct {
     bool isMine = false;            ///< `bool` Indicates if the cell is a mine (`default = false`).
     bool isCovered = true;          ///< `bool` Indicates if the cell is covered by the user (`default = true`).
     bool isFlagged = false;         ///< `bool` Indicates if the cell has been flagged by the user (`default = false`).

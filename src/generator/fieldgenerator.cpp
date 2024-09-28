@@ -2,10 +2,12 @@
  * @file fieldgenerator.cpp
  * @author juscghwe <a href = "https://github.com/juscghwe">GitHub<\a>
  * @brief Defines the `FieldGenerator` class, which generates a minefield for the Minesweeper game.
- * @headerfile "include/generatefield.hpp"
+ * @headerfile "include/fieldgenerator.hpp"
+ * @headerfile "generatorconstants.hpp"
  */
 
-#include "fieldgenerator.hpp"
+#include "generator/fieldgenerator.hpp"
+#include "generatorconstants.hpp"
 #include <random>
 
 namespace MineSweeper {
@@ -20,7 +22,7 @@ FieldGenerator::FieldGenerator(const std::size_t rows, const std::size_t columns
 std::unique_ptr<MineSweeper::FieldVector> FieldGenerator::generateField()
 {
     const std::set<int> mineFieldOneD = uniqueRandomNumbers(0, rows_ * columns_ - 1, mines_);
-    const std::set<Position> mineFieldTwoD = minePlacementTwoD(mineFieldOneD);
+    const std::set<PositionStruct> mineFieldTwoD = minePlacementTwoD(mineFieldOneD);
     placeMines(mineFieldTwoD);
 
     return std::move(fieldGrid_);
@@ -46,30 +48,30 @@ std::set<int> FieldGenerator::uniqueRandomNumbers(const int min, const int max, 
 };
 
 // @private
-std::set<Position> FieldGenerator::minePlacementTwoD(const std::set<int>& mineFieldOneD) const
+std::set<PositionStruct> FieldGenerator::minePlacementTwoD(const std::set<int>& mineFieldOneD) const
 {
-    std::set<Position> mineFieldTwoD;
+    std::set<PositionStruct> mineFieldTwoD;
     for (const int positionOneD : mineFieldOneD) {
         const int row = positionOneD / columns_;
         const int column = positionOneD % columns_;
-        mineFieldTwoD.insert(Position{row, column});
+        mineFieldTwoD.insert(PositionStruct{row, column});
     }
     return mineFieldTwoD;
 };
 
 // @private
-void FieldGenerator::placeMines(const std::set<Position>& mineFieldTwoD)
+void FieldGenerator::placeMines(const std::set<PositionStruct>& mineFieldTwoD)
 {
-    for (const Position position : mineFieldTwoD) {
+    for (const PositionStruct position : mineFieldTwoD) {
         fieldGrid_->at(position.row, position.column).isMine = true;
         calculateAdjecentMines(position);
     };
 };
 
 // @private
-void FieldGenerator::calculateAdjecentMines(const Position& position)
+void FieldGenerator::calculateAdjecentMines(const PositionStruct& position)
 {
-    for (const Position adjecent : ADJECENT_FIELDS_RELATIVE) {
+    for (const PositionStruct& adjecent : KGenerator::ADJECENT_FIELDS_RELATIVE) {
         if (position.row + adjecent.row >= 0 && position.row + adjecent.row < rows_ &&
             position.column + adjecent.column >= 0 && position.column + adjecent.column < columns_) {
             fieldGrid_->at(position.row + adjecent.row, position.column + adjecent.column).adjecentMines += 1;

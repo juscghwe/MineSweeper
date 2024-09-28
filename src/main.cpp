@@ -1,4 +1,12 @@
-#include "fieldgenerator.hpp"
+/**
+ * @file main.cpp
+ * @author juscghwe <a href = "https://github.com/juscghwe">GitHub<\a>
+ * @brief Main for MineSweeper.
+ * @headerfile "include/generator/fieldgenerator.hpp"
+ * @headerfile "SFML/Graphics.hpp"
+ */
+
+#include "generator/fieldgenerator.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
@@ -10,8 +18,8 @@ int main()
 
     // testing only
     // TODO: Remove
-    for (std::vector<MineSweeper::CellStructure> row : playfield->getFieldGrid()) {
-        for (MineSweeper::CellStructure column : row) {
+    for (std::vector<MineSweeper::CellStruct> row : playfield->getFieldGrid()) {
+        for (MineSweeper::CellStruct column : row) {
             std::cout << (column.isMine ? "X" : std::to_string(column.adjecentMines));
         }
         std::cout << "\n";
