@@ -2,37 +2,20 @@
  * @file fieldgenerator.hpp
  * @author juscghwe <a href = "https://github.com/juscghwe">GitHub<\a>
  * @brief Defines the `FieldGenerator` class, which generates a minefield for the Minesweeper game.
+ * @headerfile "utility/fieldvector.hpp"
+ * @headerfile "utility/positionstruct.hpp"
  */
 
 #ifndef FIELD_GENERATOR_H
 #define FIELD_GENERATOR_H
 
 #include "utility/fieldvector.hpp"
+#include "utility/positionstruct.hpp"
 #include <memory>
 #include <set>
 
 namespace MineSweeper {
 namespace Generation {
-
-// Represents the directional position of a field in the minefield grid.
-struct Position {
-    const int row;     ///< `int` Row index of the position in the grid.
-    const int column;  ///< `int` Column index of the position in the grid.
-
-    /**
-     * @brief Compares two `Position` objects for ordering. Necessary for `std::set<Position>`.
-     * @param other The other `Position` to compare against.
-     * @return `bool` `true` if this `Position` is less than the other, `false` otherwise.
-     */
-    constexpr bool operator<(const Position& other) const
-    {
-        return (row == other.row) ? (column < other.column) : (row < other.row);
-    }
-};
-
-// A constant `std::set<Position>` representing the relative positions of adjacent fields.
-const std::set<Position> ADJECENT_FIELDS_RELATIVE =
-    {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
 
 /**
  * @class `FieldGenerator`
@@ -78,23 +61,23 @@ class FieldGenerator
      * @private
      * @brief Transforms a 1D representation of mine positions into a 2D representation.
      * @param mineFieldOneD `std::set<int>` A set of integers representing linear positions of mines.
-     * @return `std::set<Position>` A set of objects representing 2D coordinates of the mines.
+     * @return `std::set<PositionStruct>` A set of objects representing 2D coordinates of the mines.
      */
-    std::set<Position> minePlacementTwoD(const std::set<int>& mineFieldOneD) const;
+    std::set<PositionStruct> minePlacementTwoD(const std::set<int>& mineFieldOneD) const;
 
     /**
      * @private
      * @brief Places mines in the field grid based on the provided 2D positions.
-     * @param mineFieldTwoD `std::set<Position>` A set indicating where to place the mines.
+     * @param mineFieldTwoD `std::set<PositionStruct>` A set indicating where to place the mines.
      */
-    void placeMines(const std::set<Position>& mineFieldTwoD);
+    void placeMines(const std::set<PositionStruct>& mineFieldTwoD);
 
     /**
      * @private
      * @brief Calculates the number of adjacent mines for a given position in the minefield.
-     * @param position `Position` The field for which to calculate adjacent mines.
+     * @param position `PositionStruct` The field for which to calculate adjacent mines.
      */
-    void calculateAdjecentMines(const Position& position);
+    void calculateAdjecentMines(const PositionStruct& position);
 };
 };  // namespace Generation
 };  // namespace MineSweeper

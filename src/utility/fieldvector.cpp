@@ -11,10 +11,10 @@ namespace MineSweeper {
 FieldVector::FieldVector(const std::size_t rows, const std::size_t columns, const std::size_t mines)
     : rows_(rows), columns_(columns), mines_(mines)
 {
-    fieldGrid_.resize(rows, std::vector<MineSweeper::CellStructure>(columns));
+    fieldGrid_.resize(rows, std::vector<MineSweeper::CellStruct>(columns));
 }
 
-MineSweeper::CellStructure& FieldVector::at(size_t row, size_t column)
+MineSweeper::CellStruct& FieldVector::at(size_t row, size_t column)
 {
     if (isInvalidIndex(row, column)) {
         throw std::out_of_range("Index out of bounds.\n");

@@ -14,9 +14,9 @@ TextureManager& TextureManager::getInstance()
     return instance;
 }
 
-sf::Texture& TextureManager::getTexture(const GUI::CellState kState, const int kAdjecentMines)
+sf::Texture& TextureManager::getTexture(const KTextures::CellState kState, const int kAdjecentMines)
 {
-    if (kState == GUI::CellState::Adjecent) {
+    if (kState == KTextures::CellState::Adjecent) {
         if (adjecentTextures_.find(kAdjecentMines) == adjecentTextures_.end()) {
             adjecentTextures_[kAdjecentMines] = loadTextureForAdjecent(kAdjecentMines);
         }
@@ -33,7 +33,7 @@ sf::Texture& TextureManager::getTexture(const GUI::CellState kState, const int k
 sf::Texture TextureManager::loadTextureForAdjecent(const int kAdjecentMines)
 {
     sf::Texture texture;
-    const std::string kFilename = GUI::TextureConstants::getAdjecentTexture(kAdjecentMines);
+    const std::string kFilename = KTextures::TextureConstants::getAdjecentTexture(kAdjecentMines);
     if (!texture.loadFromFile(kFilename)) {
         throw std::runtime_error("Asset not found: ");
     }
@@ -42,10 +42,10 @@ sf::Texture TextureManager::loadTextureForAdjecent(const int kAdjecentMines)
 }
 
 // @private
-sf::Texture TextureManager::loadTextureForState(const GUI::CellState kState)
+sf::Texture TextureManager::loadTextureForState(const KTextures::CellState kState)
 {
     sf::Texture texture;
-    const std::string kFilename = GUI::TextureConstants::getTextureForState(kState);
+    const std::string kFilename = KTextures::TextureConstants::getTextureForState(kState);
     if (!texture.loadFromFile(kFilename)) {
         throw std::runtime_error("Asset not found: " + kFilename);
     }

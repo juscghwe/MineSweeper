@@ -18,8 +18,8 @@ int main()
 
     // testing only
     // TODO: Remove
-    for (std::vector<MineSweeper::CellStructure> row : playfield->getFieldGrid()) {
-        for (MineSweeper::CellStructure column : row) {
+    for (std::vector<MineSweeper::CellStruct> row : playfield->getFieldGrid()) {
+        for (MineSweeper::CellStruct column : row) {
             std::cout << (column.isMine ? "X" : std::to_string(column.adjecentMines));
         }
         std::cout << "\n";
