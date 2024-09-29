@@ -1,8 +1,6 @@
 #include "utility/fieldvector.hpp"
 #include <gtest/gtest.h>
 
-namespace MineSweeper {
-
 // Test class for the FieldVector
 class FieldVectorTest : public ::testing::Test
 {
@@ -11,7 +9,7 @@ class FieldVectorTest : public ::testing::Test
     const size_t rows = 5;
     const size_t columns = 5;
     const size_t mines = 3;
-    FieldVector fieldVector{rows, columns, mines};  // FieldVector instance for testing
+    MineSweeper::FieldVector fieldVector{rows, columns, mines};  // FieldVector instance for testing
 };
 
 // Test the constructor to ensure the grid is initialized correctly
@@ -47,5 +45,3 @@ TEST_F(FieldVectorTest, ColumnsReturnsCorrectCount)
 {
     EXPECT_EQ(fieldVector.columns(), columns);  // Ensure columns() returns correct value
 }
-
-}  // namespace MineSweeper
