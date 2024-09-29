@@ -50,38 +50,20 @@ set(TESTENVIRONMENTSGOOGLE
 set(TESTENVIRONMENTSFML
     sfml-graphics
 )
-## Function to add a test executable
-
-#function(add_test_executable NAME ENVIRONMENTS)
-#    set(TESTNAME test_${NAME})
-#    file(GLOB_RECURSE SOURCES tests/${TESTNAME}/*.cpp src/${NAME}/*.cpp)
-#    add_executable(${TESTNAME} ${SOURCES})
-#    target_link_libraries(${TESTNAME} PRIVATE ${ENVIRONMENTS})
-#    add_test(NAME ${TESTNAME} COMMAND ${TESTNAME} WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
-#endfunction()
-
+## Function to add a test executable, ENVIRONMENTS passed as ARGN
+function(add_test_executable NAME)
+    set(TESTNAME test_${NAME})
+    file(GLOB_RECURSE TESTSOURCES tests/${NAME}/*.cpp src/${NAME}/*.cpp)
+    add_executable(${TESTNAME} ${TESTSOURCES})
+    set(ENVIRONMENTS ${ARGN})
+    target_link_libraries(${TESTNAME} PRIVATE ${ENVIRONMENTS})
+    add_test(NAME ${TESTNAME} COMMAND ${TESTNAME} WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endfunction()
 ## All Tests
 ### Tests GUI
-#add_test_executable(gui ${TESTENVIRONMENTSGOOGLE} ${TESTENVIRONMENTSFML})
-set(TESTSOURCES
-    tests/gui/test_texturemanager.cpp
-    src/gui/texturemanager.cpp
-)
-enable_testing()
-add_executable(test_gui ${TESTSOURCES})
-target_link_libraries(test_gui PRIVATE gtest gtest_main sfml-graphics)
-add_test(NAME test_gui COMMAND test_gui WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
-
+add_test_executable(gui ${TESTENVIRONMENTSGOOGLE} ${TESTENVIRONMENTSFML})
 ### Tests Utility
-#add_test_executable(utility ${TESTENVIRONMENTSGOOGLE})
-set(TESTSOURCES
-    tests/utility/test_fieldvector.cpp
-    src/utility/fieldvector.cpp
-)
-enable_testing()
-add_executable(test_utility ${TESTSOURCES})
-target_link_libraries(test_utility PRIVATE gtest gtest_main)
-add_test(NAME test_utility COMMAND test_utility WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+add_test_executable(utility ${TESTENVIRONMENTSGOOGLE})
 
 # Clang-tidy
 set(CMAKE_CXX_CLANG_TIDY "C:/msys64/ucrt64/bin/clang-tidy.exe;-checks=*,-clang-analyzer-alpha*")
