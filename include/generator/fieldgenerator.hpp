@@ -39,6 +39,12 @@ class FieldGenerator
      */
     std::unique_ptr<MineSweeper::FieldVector> generateField();
 
+#ifdef TESTING
+    std::size_t getRows() const { return rows_; }
+    std::size_t getColumns() const { return columns_; }
+    std::size_t getMines() const { return mines_; }
+#endif
+
   private:
     const std::size_t rows_;     ///< `std::size_t` The number of rows in the minefield.
     const std::size_t columns_;  ///< `std::size_t` The number of columns in the minefield.

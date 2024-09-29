@@ -57,9 +57,12 @@ function(add_test_executable NAME)
     add_executable(${TESTNAME} ${TESTSOURCES})
     set(ENVIRONMENTS ${ARGN})
     target_link_libraries(${TESTNAME} PRIVATE ${ENVIRONMENTS})
+    target_compile_definitions(${TESTNAME} PRIVATE TESTING)
     add_test(NAME ${TESTNAME} COMMAND ${TESTNAME} WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endfunction()
 ## All Tests
+### Tests Generator
+add_test_executable(generator ${TESTENVIRONMENTSGOOGLE})
 ### Tests GUI
 add_test_executable(gui ${TESTENVIRONMENTSGOOGLE} ${TESTENVIRONMENTSFML})
 ### Tests Utility
