@@ -40,6 +40,7 @@ target_compile_features(main PRIVATE cxx_std_17)
 set_target_properties(main PROPERTIES OUTPUT_NAME "MineSweeper")
 
 # Tests
+include(CTest)
 enable_testing()
 ## Global test dependencies
 set(TESTENVIRONMENTSGOOGLE
