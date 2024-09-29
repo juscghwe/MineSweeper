@@ -39,15 +39,29 @@ target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)
 set_target_properties(main PROPERTIES OUTPUT_NAME "MineSweeper")
 
-# Building test
-set(TESTSOURCES
-    tests/test_texturemanager.cpp
-    src/gui/texturemanager.cpp
-)
+# Tests
 enable_testing()
-add_executable(test_texturemanager ${TESTSOURCES})
-target_link_libraries(test_texturemanager PRIVATE gtest gtest_main sfml-graphics)
-add_test(NAME test_texturemanager COMMAND test_texturemanager WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+## Global test dependencies
+set(TESTENVIRONMENTSGOOGLE
+    gtest 
+    gtest_main 
+)
+set(TESTENVIRONMENTSFML
+    sfml-graphics
+)
+## Function to add a test executable
+function(add_test_executable NAME ENVIRONMENTS)
+    set(TESTNAME test_${NAME})
+    file(GLOB_RECURSE SOURCES tests/${TESTNAME}/*.cpp src/${NAME}/*.cpp)
+    add_executable(${TESTNAME} ${SOURCES})
+    add_test(NAME ${TESTNAME} COMMAND ${TESTNAME} WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+    target_link_libraries(${TESTNAME} PRIVATE ${ENVIRONMENTS})
+endfunction()
+## All Tests
+### Tests GUI
+add_test_executable(gui ${TESTENVIRONMENTSGOOGLE} ${TESTENVIRONMENTSFML})
+### Tests Utility
+#add_test_executable(utility ${TESTENVIRONMENTSGOOGLE})
 
 # Clang-tidy
 set(CMAKE_CXX_CLANG_TIDY "C:/msys64/ucrt64/bin/clang-tidy.exe;-checks=*,-clang-analyzer-alpha*")
