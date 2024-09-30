@@ -24,4 +24,4 @@ struct CellStruct {
 
 }  // namespace MineSweeper
 
-#endif  // CELL_STRUCTURE_H_
+#endif  // CELL_STRUCTURE_H

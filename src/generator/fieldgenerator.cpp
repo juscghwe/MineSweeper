@@ -71,7 +71,7 @@ void FieldGenerator::placeMines(const std::set<PositionStruct>& mineFieldTwoD)
 // @private
 void FieldGenerator::calculateAdjecentMines(const PositionStruct& position)
 {
-    for (const PositionStruct& adjecent : KGenerator::ADJECENT_FIELDS_RELATIVE) {
+    for (const PositionStruct& adjecent : KGenerator::ADJACENT_FIELDS_RELATIVE) {
         if (position.row + adjecent.row >= 0 && position.row + adjecent.row < rows_ &&
             position.column + adjecent.column >= 0 && position.column + adjecent.column < columns_) {
             fieldGrid_->at(position.row + adjecent.row, position.column + adjecent.column).adjecentMines += 1;

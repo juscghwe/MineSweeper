@@ -54,10 +54,15 @@ set(TESTENVIRONMENTSFML
 function(add_test_executable NAME)
     set(TESTNAME test_${NAME})
     file(GLOB_RECURSE TESTSOURCES tests/${NAME}/*.cpp src/${NAME}/*.cpp)
+
+    # Add FieldVector sources to the test executable (temporary solution)
+    if(NAME STREQUAL "generator")
+        list(APPEND TESTSOURCES ${CMAKE_SOURCE_DIR}/src/utility/fieldvector.cpp)
+    endif()
+
     add_executable(${TESTNAME} ${TESTSOURCES})
     set(ENVIRONMENTS ${ARGN})
     target_link_libraries(${TESTNAME} PRIVATE ${ENVIRONMENTS})
-    target_compile_definitions(${TESTNAME} PRIVATE TESTING)
     add_test(NAME ${TESTNAME} COMMAND ${TESTNAME} WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endfunction()
 ## All Tests

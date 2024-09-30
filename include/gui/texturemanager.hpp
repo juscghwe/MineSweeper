@@ -16,7 +16,6 @@
 #include <SFML/Graphics.hpp>
 #include <map>
 #include <stdexcept>
-#include <string>
 
 namespace MineSweeper {
 /**
@@ -39,7 +38,7 @@ class TextureManager
     /**
      * @brief Retrieves the texture corresponding to a cell state.
      * @param kState `CellState` The state of the cell.
-     * @param kAdjecentMines `int=0` The number of adjacent mines (only relevant for Adjecent state).
+     * @param kAdjecentMines `int=0` The number of adjacent mines (only relevant for Adjacent state).
      * @return `sf::Texture` Reference to the texture for the given state.
      */
     sf::Texture& getTexture(const KTextures::CellState kState, const int kAdjecentMines = 0);
@@ -68,4 +67,4 @@ class TextureManager
 };
 };  // namespace MineSweeper
 
-#endif  // TEXTURE_MANAGER_H_
+#endif  // TEXTURE_MANAGER_H

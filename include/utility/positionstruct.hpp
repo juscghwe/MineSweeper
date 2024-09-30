@@ -30,4 +30,4 @@ struct PositionStruct {
 
 }  // namespace MineSweeper
 
-#endif  // POSITION_STRUCTURE_H_
+#endif  // POSITION_STRUCTURE_H

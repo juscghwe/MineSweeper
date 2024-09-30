@@ -42,13 +42,13 @@ class FieldVector
      * @brief Retrieves the number of rows in the grid.
      * @return `size_t` The number of rows in the grid.
      */
-    size_t rows() const;
+    size_t rows() const { return fieldGrid_.size(); };
 
     /**
      * @brief Retrieves the number of columns in the grid.
      * @return `size_t` The number of columns in the grid.
      */
-    size_t columns() const;
+    size_t columns() const { return fieldGrid_[0].size(); };
 
     /**
      * @brief Retrieves the entire field grid.
@@ -75,4 +75,4 @@ class FieldVector
 
 };  // namespace MineSweeper
 
-#endif  // FIELD_VECTOR_H_
+#endif  // FIELD_VECTOR_H

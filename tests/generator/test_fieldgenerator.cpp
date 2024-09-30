@@ -22,7 +22,6 @@ class FieldGeneratorTest : public ::testing::Test
     void SetUp() override { fieldGenerator = std::make_unique<Gen::FieldGenerator>(rows, columns, mines); }
 };
 
-#ifdef TESTING
 // Test the constructor to ensure it initializes the field correctly.
 TEST_F(FieldGeneratorTest, ConstructorInitializesCorrectly)
 {
@@ -30,7 +29,6 @@ TEST_F(FieldGeneratorTest, ConstructorInitializesCorrectly)
     EXPECT_EQ(fieldGenerator->getColumns(), columns);
     EXPECT_EQ(fieldGenerator->getMines(), mines);
 }
-#endif  // TESTING_
 
 // Test generateField to ensure the correct number of mines is placed.
 TEST_F(FieldGeneratorTest, GenerateFieldPlacesCorrectNumberOfMines)
@@ -62,7 +60,7 @@ TEST_F(FieldGeneratorTest, AdjacentMinesAreCalculatedCorrectly)
 
             // Check if the number of adjacent mines matches the cell's adjacentMines count
             std::size_t expectedAdjMines = 0;
-            for (const auto& adj : KGen::ADJECENT_FIELDS_RELATIVE) {
+            for (const auto& adj : KGen::ADJACENT_FIELDS_RELATIVE) {
                 int adjRow = static_cast<int>(row) + adj.row;
                 int adjCol = static_cast<int>(col) + adj.column;
                 if (adjRow >= 0 && adjRow < static_cast<int>(rows) && adjCol >= 0 &&

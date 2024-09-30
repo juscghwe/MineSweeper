@@ -6,6 +6,7 @@
  */
 
 #include "gui/texturemanager.hpp"
+#include <string>
 
 namespace MineSweeper {
 TextureManager& TextureManager::getInstance()
@@ -16,7 +17,7 @@ TextureManager& TextureManager::getInstance()
 
 sf::Texture& TextureManager::getTexture(const KTextures::CellState kState, const int kAdjecentMines)
 {
-    if (kState == KTextures::CellState::Adjecent) {
+    if (kState == KTextures::CellState::Adjacent) {
         if (adjecentTextures_.find(kAdjecentMines) == adjecentTextures_.end()) {
             adjecentTextures_[kAdjecentMines] = loadTextureForAdjecent(kAdjecentMines);
         }
@@ -33,7 +34,7 @@ sf::Texture& TextureManager::getTexture(const KTextures::CellState kState, const
 sf::Texture TextureManager::loadTextureForAdjecent(const int kAdjecentMines)
 {
     sf::Texture texture;
-    const std::string kFilename = KTextures::TextureConstants::getAdjecentTexture(kAdjecentMines);
+    const std::string kFilename = KTextures::TextureConstants::getAdjacentTexture(kAdjecentMines);
     if (!texture.loadFromFile(kFilename)) {
         throw std::runtime_error("Asset not found: ");
     }

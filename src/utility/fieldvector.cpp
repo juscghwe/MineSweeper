@@ -22,16 +22,6 @@ MineSweeper::CellStruct& FieldVector::at(size_t row, size_t column)
     return fieldGrid_[row][column];
 }
 
-size_t FieldVector::rows() const
-{
-    return fieldGrid_.size();
-}
-
-size_t FieldVector::columns() const
-{
-    return fieldGrid_[0].size();
-}
-
 // @private
 bool FieldVector::isInvalidIndex(const size_t row, const size_t column) const
 {

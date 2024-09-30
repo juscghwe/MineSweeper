@@ -37,9 +37,9 @@ class TextureManagerAdjecentTest : public ::testing::TestWithParam<int>
 TEST_P(TextureManagerAdjecentTest, LoadsTextureForAdjecent)
 {
     int adjecentMines = GetParam();
-    EXPECT_NO_THROW(textureManager.getTexture(KTex::CellState::Adjecent,
+    EXPECT_NO_THROW(textureManager.getTexture(KTex::CellState::Adjacent,
                                               adjecentMines));  // Ensure no exception is thrown
-    EXPECT_TRUE(textureManager.getTexture(KTex::CellState::Adjecent, adjecentMines).getSize().x >
+    EXPECT_TRUE(textureManager.getTexture(KTex::CellState::Adjacent, adjecentMines).getSize().x >
                 0);  // Validate the texture size
 }
 
@@ -57,6 +57,6 @@ TEST_F(TextureManagerTest, ThrowsForInvalidState)
 // Test for invalid state handling in TextureManager for adjacent textures
 TEST_F(TextureManagerAdjecentTest, ThrowsForInvalidState)
 {
-    EXPECT_THROW(textureManager.getTexture(KTex::CellState::Adjecent, 99),
+    EXPECT_THROW(textureManager.getTexture(KTex::CellState::Adjacent, 99),
                  std::out_of_range);  // Ensure exception is thrown for invalid adjacent count
 }
