@@ -1,6 +1,6 @@
-#include "fieldgenerator.hpp"
-#include "fieldvector.hpp"
+#include "generator/fieldgenerator.hpp"
 #include "generatorconstants.hpp"
+#include "utility/fieldvector.hpp"
 #include <gtest/gtest.h>
 #include <memory>
 #include <set>

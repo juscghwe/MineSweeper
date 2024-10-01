@@ -5,7 +5,7 @@
  * @headerfile "include/fieldvector.hpp"
  */
 
-#include "fieldvector.hpp"
+#include "utility/fieldvector.hpp"
 
 namespace Utility {
 

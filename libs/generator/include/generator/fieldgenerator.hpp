@@ -9,8 +9,8 @@
 #ifndef FIELD_GENERATOR_H
 #define FIELD_GENERATOR_H
 
-#include "fieldvector.hpp"
-#include "positionstruct.hpp"
+#include "utility/fieldvector.hpp"
+#include "utility/positionstruct.hpp"
 #include <memory>
 #include <set>
 
