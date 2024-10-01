@@ -16,13 +16,13 @@ FieldGenerator::FieldGenerator(const std::size_t rows, const std::size_t columns
     : rows_(rows),
       columns_(columns),
       mines_(mines),
-      fieldGrid_(std::make_unique<MineSweeper::FieldVector>(rows, columns, mines))
+      fieldGrid_(std::make_unique<Utility::FieldVector>(rows, columns, mines))
 {}
 
-std::unique_ptr<MineSweeper::FieldVector> FieldGenerator::generateField()
+std::unique_ptr<Utility::FieldVector> FieldGenerator::generateField()
 {
     const std::set<int> mineFieldOneD = uniqueRandomNumbers(0, rows_ * columns_ - 1, mines_);
-    const std::set<PositionStruct> mineFieldTwoD = minePlacementTwoD(mineFieldOneD);
+    const std::set<Utility::PositionStruct> mineFieldTwoD = minePlacementTwoD(mineFieldOneD);
     placeMines(mineFieldTwoD);
 
     return std::move(fieldGrid_);
@@ -48,30 +48,30 @@ std::set<int> FieldGenerator::uniqueRandomNumbers(const int min, const int max, 
 };
 
 // @private
-std::set<PositionStruct> FieldGenerator::minePlacementTwoD(const std::set<int>& mineFieldOneD) const
+std::set<Utility::PositionStruct> FieldGenerator::minePlacementTwoD(const std::set<int>& mineFieldOneD) const
 {
-    std::set<PositionStruct> mineFieldTwoD;
+    std::set<Utility::PositionStruct> mineFieldTwoD;
     for (const int positionOneD : mineFieldOneD) {
         const int row = positionOneD / columns_;
         const int column = positionOneD % columns_;
-        mineFieldTwoD.insert(PositionStruct{row, column});
+        mineFieldTwoD.insert(Utility::PositionStruct{row, column});
     }
     return mineFieldTwoD;
 };
 
 // @private
-void FieldGenerator::placeMines(const std::set<PositionStruct>& mineFieldTwoD)
+void FieldGenerator::placeMines(const std::set<Utility::PositionStruct>& mineFieldTwoD)
 {
-    for (const PositionStruct position : mineFieldTwoD) {
+    for (const Utility::PositionStruct position : mineFieldTwoD) {
         fieldGrid_->at(position.row, position.column).isMine = true;
         calculateAdjecentMines(position);
     };
 };
 
 // @private
-void FieldGenerator::calculateAdjecentMines(const PositionStruct& position)
+void FieldGenerator::calculateAdjecentMines(const Utility::PositionStruct& position)
 {
-    for (const PositionStruct& adjecent : KGenerator::ADJACENT_FIELDS_RELATIVE) {
+    for (const Utility::PositionStruct& adjecent : Constants::GeneratorConstants::ADJACENT_FIELDS_RELATIVE) {
         if (position.row + adjecent.row >= 0 && position.row + adjecent.row < rows_ &&
             position.column + adjecent.column >= 0 && position.column + adjecent.column < columns_) {
             fieldGrid_->at(position.row + adjecent.row, position.column + adjecent.column).adjecentMines += 1;
