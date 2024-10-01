@@ -7,7 +7,7 @@ namespace Constants {
 namespace GeneratorConstants {
 
 // Relative positions of adjacent cells (N, NE, E, SE, S, SW, W, NW).
-constexpr PositionStruct ADJACENT_FIELDS_RELATIVE[] =
+constexpr Utility::PositionStruct ADJACENT_FIELDS_RELATIVE[] =
     {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
 
 }  // namespace GeneratorConstants
