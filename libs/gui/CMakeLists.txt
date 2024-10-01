@@ -3,7 +3,10 @@ add_library(gui STATIC)
 
 target_include_directories(gui
     PUBLIC 
-        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+    PRIVATE 
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/constants>
 )
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/sources.cmake)
