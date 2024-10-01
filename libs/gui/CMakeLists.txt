@@ -15,4 +15,4 @@ target_link_libraries(gui PUBLIC sfml-graphics)
 # Add tests if enabled globally
 if(BUILD_TESTS)
     add_subdirectory(tests)
-endif
+endif()

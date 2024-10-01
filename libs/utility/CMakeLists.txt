@@ -12,4 +12,4 @@ target_sources(utility PRIVATE ${SOURCES})
 # Add tests if enabled globally
 if(BUILD_TESTS)
     add_subdirectory(tests)
-endif
+endif()
