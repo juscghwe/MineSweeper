@@ -1,7 +1,7 @@
 #ifndef GENERATOR_CONSTANTS_H
 #define GENERATOR_CONSTANTS_H
 
-#include "utility/include/positionstruct.hpp"
+#include "positionstruct.hpp"
 
 namespace Constants {
 namespace GeneratorConstants {
