@@ -12,11 +12,6 @@ set(CMAKE_CXX_COMPILER "C:/msys64/ucrt64/bin/g++.exe")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
-# Include
-include(cmake/dependencies.cmake)
-include(cmake/build_settings.cmake)
-include(cmake/tests.cmake)
-
 # Add libraries
 add_subdirectory(libs/generator)
 add_subdirectory(libs/gui)
@@ -24,6 +19,13 @@ add_subdirectory(libs/utility)
 
 # Build
 add_executable(${PROJECT_NAME} src/main.cpp)
+
+# Include
+include(cmake/dependencies.cmake)
+include(cmake/build_settings.cmake)
+include(cmake/tests.cmake)
+
+# Link libraries
 target_link_libraries(${PROJECT_NAME} PRIVATE sfml-graphics generator gui utility)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Werror)
