@@ -6,7 +6,7 @@
  * @headerfile "generatorconstants.hpp"
  */
 
-#include "generator/fieldgenerator.hpp"
+#include "fieldgenerator.hpp"
 #include "generatorconstants.hpp"
 #include <random>
 

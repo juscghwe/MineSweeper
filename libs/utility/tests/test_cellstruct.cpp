@@ -1,4 +1,4 @@
-#include "utility/cellstruct.hpp"
+#include "cellstruct.hpp"
 #include <gtest/gtest.h>
 
 // Test the default values for CellStruct

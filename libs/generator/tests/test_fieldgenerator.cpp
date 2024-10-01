@@ -1,4 +1,4 @@
-#include "generator/fieldgenerator.hpp"
+#include "fieldgenerator.hpp"
 #include "generatorconstants.hpp"
 #include "utility/fieldvector.hpp"
 #include <gtest/gtest.h>

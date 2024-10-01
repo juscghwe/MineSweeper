@@ -1,4 +1,4 @@
-#include "gui/texturemanager.hpp"
+#include "texturemanager.hpp"
 #include <gtest/gtest.h>
 
 constexpr int NUM_ADJECENT_TEXTURES = 8;  // Number of adjacent textures available

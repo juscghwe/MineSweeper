@@ -1,4 +1,4 @@
-# CMakeLists.txt
+# CMakeLists.txt [root]
 set(PROJECT_NAME
     MineSweeper)
 
@@ -17,6 +17,17 @@ option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 include(cmake/dependencies.cmake)
 include(cmake/build_settings.cmake)
 include(cmake/tests.cmake)
+
+# Add libraries
+add_subdirectory(libs/generator)
+add_subdirectory(libs/gui)
+add_subdirectory(libs/utility)
+
+# Build
+add_executable(${PROJECT_NAME} src/main.cpp)
+target_link_libraries(${PROJECT_NAME} PRIVATE sfml-graphics generator gui utility)
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Werror)
 
 # Clang-tidy
 set(CMAKE_CXX_CLANG_TIDY "C:/msys64/ucrt64/bin/clang-tidy.exe;-checks=*,-clang-analyzer-alpha*")

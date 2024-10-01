@@ -1,4 +1,4 @@
-#include "utility/positionstruct.hpp"
+#include "positionstruct.hpp"
 #include <gtest/gtest.h>
 #include <set>
 

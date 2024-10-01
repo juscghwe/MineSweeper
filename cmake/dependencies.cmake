@@ -1,4 +1,4 @@
-# dependencies.cmake
+# dependencies.cmake [root]
 # Handles external dependencies
 include(FetchContent)
 FetchContent_Declare(SFML

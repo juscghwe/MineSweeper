@@ -1,4 +1,4 @@
-#include "utility/fieldvector.hpp"
+#include "fieldvector.hpp"
 #include <gtest/gtest.h>
 
 // Test class for the FieldVector

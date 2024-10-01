@@ -5,7 +5,7 @@
  * @headerfile "include/fieldvector.hpp"
  */
 
-#include "utility/fieldvector.hpp"
+#include "fieldvector.hpp"
 
 namespace MineSweeper {
 FieldVector::FieldVector(const std::size_t rows, const std::size_t columns, const std::size_t mines)

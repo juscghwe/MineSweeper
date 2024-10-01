@@ -5,7 +5,7 @@
  * @headerfile "include/gui/texturemanager.hpp"
  */
 
-#include "gui/texturemanager.hpp"
+#include "texturemanager.hpp"
 #include <string>
 
 namespace MineSweeper {
