@@ -7,7 +7,7 @@
 #ifndef POSITION_STRUCTURE_H
 #define POSITION_STRUCTURE_H
 
-namespace MineSweeper {
+namespace Utility {
 
 /**
  * @struct PositionStruct
@@ -28,6 +28,6 @@ struct PositionStruct {
     }
 };
 
-}  // namespace MineSweeper
+}  // namespace Utility
 
 #endif  // POSITION_STRUCTURE_H

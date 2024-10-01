@@ -9,7 +9,7 @@
 
 #include <cstddef>
 
-namespace MineSweeper {
+namespace Utility {
 
 /**
  * @struct CellStruct
@@ -22,6 +22,6 @@ struct CellStruct {
     std::size_t adjecentMines = 0;  ///< `std::size_t` Count of adjacent mines around the cell (`default = 0`).
 };
 
-}  // namespace MineSweeper
+}  // namespace Utility
 
 #endif  // CELL_STRUCTURE_H

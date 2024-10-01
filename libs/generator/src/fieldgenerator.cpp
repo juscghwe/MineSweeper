@@ -10,8 +10,8 @@
 #include "generatorconstants.hpp"
 #include <random>
 
-namespace MineSweeper {
-namespace Generation {
+namespace Generator {
+
 FieldGenerator::FieldGenerator(const std::size_t rows, const std::size_t columns, const std::size_t mines)
     : rows_(rows),
       columns_(columns),
@@ -78,5 +78,5 @@ void FieldGenerator::calculateAdjecentMines(const PositionStruct& position)
         }
     }
 };
-}  // namespace Generation
-}  // namespace MineSweeper
+
+}  // namespace Generator

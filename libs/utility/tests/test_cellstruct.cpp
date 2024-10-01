@@ -4,7 +4,7 @@
 // Test the default values for CellStruct
 TEST(CellStructTest, DefaultConstructor)
 {
-    MineSweeper::CellStruct cell;
+    Utility::CellStruct cell;
     EXPECT_FALSE(cell.isMine);         ///< Cell should not be a mine at the beginning of the game.
     EXPECT_TRUE(cell.isCovered);       ///< Cell should be covered at the beginning of the game.
     EXPECT_FALSE(cell.isFlagged);      ///< Cell should not be flagged at the beginning of the game.
@@ -14,7 +14,7 @@ TEST(CellStructTest, DefaultConstructor)
 // Test if values of CellStruct can be modified
 TEST(CellStructTest, ModifyCellAttributes)
 {
-    MineSweeper::CellStruct cell;
+    Utility::CellStruct cell;
 
     // set new values
     cell.isMine = true;

@@ -8,16 +8,17 @@
 #include "texturemanager.hpp"
 #include <string>
 
-namespace MineSweeper {
+namespace Gui {
+
 TextureManager& TextureManager::getInstance()
 {
     static TextureManager instance;
     return instance;
 }
 
-sf::Texture& TextureManager::getTexture(const KTextures::CellState kState, const int kAdjecentMines)
+sf::Texture& TextureManager::getTexture(const Constants::GuiConstants::CellState kState, const int kAdjecentMines)
 {
-    if (kState == KTextures::CellState::Adjacent) {
+    if (kState == Constants::GuiConstants::CellState::Adjacent) {
         if (adjecentTextures_.find(kAdjecentMines) == adjecentTextures_.end()) {
             adjecentTextures_[kAdjecentMines] = loadTextureForAdjecent(kAdjecentMines);
         }
@@ -34,7 +35,7 @@ sf::Texture& TextureManager::getTexture(const KTextures::CellState kState, const
 sf::Texture TextureManager::loadTextureForAdjecent(const int kAdjecentMines)
 {
     sf::Texture texture;
-    const std::string kFilename = KTextures::TextureConstants::getAdjacentTexture(kAdjecentMines);
+    const std::string kFilename = Constants::GuiConstants::TextureConstants::getAdjacentTexture(kAdjecentMines);
     if (!texture.loadFromFile(kFilename)) {
         throw std::runtime_error("Asset not found: ");
     }
@@ -43,14 +44,15 @@ sf::Texture TextureManager::loadTextureForAdjecent(const int kAdjecentMines)
 }
 
 // @private
-sf::Texture TextureManager::loadTextureForState(const KTextures::CellState kState)
+sf::Texture TextureManager::loadTextureForState(const Constants::GuiConstants::CellState kState)
 {
     sf::Texture texture;
-    const std::string kFilename = KTextures::TextureConstants::getTextureForState(kState);
+    const std::string kFilename = Constants::GuiConstants::TextureConstants::getTextureForState(kState);
     if (!texture.loadFromFile(kFilename)) {
         throw std::runtime_error("Asset not found: " + kFilename);
     }
     texture.setSmooth(true);
     return std::move(texture);
 }
-}  // namespace MineSweeper
+
+}  // namespace Gui

@@ -7,14 +7,15 @@
 
 #include "fieldvector.hpp"
 
-namespace MineSweeper {
+namespace Utility {
+
 FieldVector::FieldVector(const std::size_t rows, const std::size_t columns, const std::size_t mines)
     : rows_(rows), columns_(columns), mines_(mines)
 {
-    fieldGrid_.resize(rows, std::vector<MineSweeper::CellStruct>(columns));
+    fieldGrid_.resize(rows, std::vector<Utility::CellStruct>(columns));
 }
 
-MineSweeper::CellStruct& FieldVector::at(size_t row, size_t column)
+Utility::CellStruct& FieldVector::at(size_t row, size_t column)
 {
     if (isInvalidIndex(row, column)) {
         throw std::out_of_range("Index out of bounds.\n");
@@ -27,4 +28,5 @@ bool FieldVector::isInvalidIndex(const size_t row, const size_t column) const
 {
     return (row >= rows() || column >= columns());
 }
-}  // namespace MineSweeper
+
+}  // namespace Utility

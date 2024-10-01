@@ -5,10 +5,6 @@
 #include <memory>
 #include <set>
 
-namespace MS = MineSweeper;
-namespace Gen = MineSweeper::Generation;
-namespace KGen = MineSweeper::KGenerator;
-
 // Test Fixture for FieldGenerator
 class FieldGeneratorTest : public ::testing::Test
 {

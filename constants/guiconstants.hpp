@@ -5,8 +5,8 @@
 #include <stdexcept>
 #include <string>
 
-namespace MineSweeper {
-namespace KTextures {
+namespace Constants {
+namespace GuiConstants {
 
 /**
  * @brief Enumeration to represent the state of a cell.
@@ -75,7 +75,7 @@ class TextureConstants
     };
 };
 
-};  // namespace KTextures
-};  // namespace MineSweeper
+};  // namespace GuiConstants
+};  // namespace Constants
 
 #endif  // GUI_CONSTANTS_H

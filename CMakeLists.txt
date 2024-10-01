@@ -1,6 +1,5 @@
 # CMakeLists.txt [root]
-set(PROJECT_NAME
-    MineSweeper)
+set(PROJECT_NAME MineSweeper)
 
 # root
 cmake_minimum_required(VERSION 3.28)

@@ -14,8 +14,7 @@
 #include <memory>
 #include <set>
 
-namespace MineSweeper {
-namespace Generation {
+namespace Generator {
 
 /**
  * @class `FieldGenerator`
@@ -83,7 +82,7 @@ class FieldGenerator
      */
     void calculateAdjecentMines(const PositionStruct& position);
 };
-};  // namespace Generation
-};  // namespace MineSweeper
+
+};  // namespace Generator
 
 #endif  // FIELD_GENERATOR_H

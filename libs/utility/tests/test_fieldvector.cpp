@@ -9,7 +9,7 @@ class FieldVectorTest : public ::testing::Test
     const size_t rows = 5;
     const size_t columns = 5;
     const size_t mines = 3;
-    MineSweeper::FieldVector fieldVector{rows, columns, mines};  // FieldVector instance for testing
+    Utility::FieldVector fieldVector{rows, columns, mines};  // FieldVector instance for testing
 };
 
 // Test the constructor to ensure the grid is initialized correctly

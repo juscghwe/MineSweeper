@@ -1,18 +1,16 @@
 #ifndef GENERATOR_CONSTANTS_H
 #define GENERATOR_CONSTANTS_H
 
-#include "utility/positionstruct.hpp"
+#include "utility/include/positionstruct.hpp"
 
-namespace MineSweeper {
-
-namespace KGenerator {
+namespace Constants {
+namespace GeneratorConstants {
 
 // Relative positions of adjacent cells (N, NE, E, SE, S, SW, W, NW).
 constexpr PositionStruct ADJACENT_FIELDS_RELATIVE[] =
     {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
 
-}  // namespace KGenerator
-
-}  // namespace MineSweeper
+}  // namespace GeneratorConstants
+}  // namespace Constants
 
 #endif  // GENERATOR_CONSTANTS_H
