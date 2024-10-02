@@ -1,5 +1,5 @@
 [comment]: <> (`libs/utility/readme.md`)
-
+[comment]: <> (@author juscghwe https://github.com/juscghwe)
 # Utility Library
 
 The `Utility` library provides common data structures and helper functions used throughout the Minesweeper project. It includes classes like `FieldVector` and `CellStruct` for managing the game's internal state.

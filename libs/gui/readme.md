@@ -1,5 +1,5 @@
 [comment]: <> (`libs/gui/readme.md`)
-
+[comment]: <> (@author juscghwe https://github.com/juscghwe)
 # GUI Library
 
 ## Overview

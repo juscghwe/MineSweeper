@@ -1,3 +1,5 @@
+[comment]: <> (`root/readme.md`)
+[comment]: <> (@author juscghwe https://github.com/juscghwe)
 # Minesweeper Project (WIP)
 
 Welcome to my **Minesweeper** project! This repository serves as a **learning ground** for me to experiment and grow as a developer. Please note that everything is a **work in progress (WIP)**, and the code might be incomplete or undergoing changes as I work through different concepts and techniques.
