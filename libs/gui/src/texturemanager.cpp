@@ -32,7 +32,7 @@ sf::Texture& TextureManager::getTexture(const Constants::GuiConstants::CellState
 }
 
 // @private
-sf::Texture TextureManager::loadTextureForAdjecent(const int kAdjecentMines)
+const sf::Texture TextureManager::loadTextureForAdjecent(const int kAdjecentMines) const
 {
     sf::Texture texture;
     const std::string kFilename = Constants::GuiConstants::TextureConstants::getAdjacentTexture(kAdjecentMines);
@@ -44,7 +44,7 @@ sf::Texture TextureManager::loadTextureForAdjecent(const int kAdjecentMines)
 }
 
 // @private
-sf::Texture TextureManager::loadTextureForState(const Constants::GuiConstants::CellState kState)
+const sf::Texture TextureManager::loadTextureForState(const Constants::GuiConstants::CellState kState) const
 {
     sf::Texture texture;
     const std::string kFilename = Constants::GuiConstants::TextureConstants::getTextureForState(kState);

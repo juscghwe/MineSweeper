@@ -57,14 +57,14 @@ class TextureManager
      * @param kAdjecentMines `int` The number of adjacent mines.
      * @return The loaded `sf::Texture` object.
      */
-    sf::Texture loadTextureForAdjecent(const int kAdjecentMines);
+    const sf::Texture loadTextureForAdjecent(const int kAdjecentMines) const;
 
     /**
      * @brief Loads the texture corresponding to a cell state.
      * @param kState `CellState` The state of the cell.
      * @return The loaded `sf::Texture` object.
      */
-    sf::Texture loadTextureForState(const Constants::GuiConstants::CellState kState);
+    const sf::Texture loadTextureForState(const Constants::GuiConstants::CellState kState) const;
 };
 
 };  // namespace Gui
