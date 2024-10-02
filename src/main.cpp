@@ -7,9 +7,10 @@
  */
 
 #include "generator/fieldgenerator.hpp"
+#include "gui/fieldarray.hpp"
+#include "gui/texturemanager.hpp"
 #include "utility/fieldvector.hpp"
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
 int main()
 {
@@ -17,16 +18,10 @@ int main()
     Generator::FieldGenerator fieldGenerator(10, 10, 4);
     std::unique_ptr<Utility::FieldVector> playfield = fieldGenerator.generateField();
 
-    // testing only
-    // TODO: Remove
-    for (std::vector<Utility::CellStruct> row : playfield->getFieldGrid()) {
-        for (Utility::CellStruct column : row) {
-            std::cout << (column.isMine ? "X" : std::to_string(column.adjacentMines));
-        }
-        std::cout << "\n";
-    }
+    // Texture manager
+    Gui::TextureManager& textureManager = Gui::TextureManager::getInstance();
+    Gui::FieldArray fieldArray(playfield, textureManager);
 
-    // setting up SFML (according to https://github.com/SFML/cmake-sfml-project/blob/a9b227e6575ba2509139208c2ca31f9b54004b40/src/main.cpp)
     // GUI / Gameloop
     auto window = sf::RenderWindow{{500u, 500u}, "MineSweeper"};
     window.setFramerateLimit(60);
@@ -37,9 +32,8 @@ int main()
                 window.close();
             }
         }
-
-        // refresh GUI
         window.clear();
+
         window.display();
     }
 
