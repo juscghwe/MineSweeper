@@ -9,8 +9,10 @@ namespace Constants {
 namespace GuiConstants {
 
 /**
- * @brief Scalings.
+ * @brief Scalings. 
+ * @details If `WINDOWBASED == true` the window-values will be used to scale the buttons, vice versa.
  */
+constexpr bool WINDOWBASED = true;
 constexpr int WINDOWX = 100;
 constexpr int WINDOWY = 100;
 constexpr int BUTTONX = 10;
