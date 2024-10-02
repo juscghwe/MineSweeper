@@ -27,7 +27,11 @@ class FieldVector
      * @param columns `size_t` The number of columns in the grid.
      * @param mines `size_t` The number of mines in the grid.
      */
-    FieldVector(const std::size_t rows, const std::size_t columns, const std::size_t mines);
+    FieldVector(const std::size_t rows, const std::size_t columns, const std::size_t mines)
+        : rows_(rows), columns_(columns), mines_(mines)
+    {
+        fieldGrid_.resize(rows, std::vector<Utility::CellStruct>(columns));
+    }
 
     /**
      * @brief Accesses the cell at a specific grid position.
@@ -36,7 +40,13 @@ class FieldVector
      * @return A reference to the `Utility::CellStruct` at the specified position.
      * @throws `std::out_of_range` if the specified indices are out of bounds.
      */
-    Utility::CellStruct& at(size_t row, size_t column);
+    Utility::CellStruct& at(size_t row, size_t column)
+    {
+        if (isInvalidIndex(row, column)) {
+            throw std::out_of_range("Index out of bounds.\n");
+        };
+        return fieldGrid_[row][column];
+    }
 
     /**
      * @brief Retrieves the number of rows in the grid.
@@ -70,7 +80,7 @@ class FieldVector
      * @return `bool` `true` if the indices are invalid; `false` otherwise.
      * @throws `std::out_of_range` if the specified indices are out of bounds.
      */
-    bool isInvalidIndex(const size_t row, const size_t column) const;
+    bool isInvalidIndex(const size_t row, const size_t column) const { return (row >= rows() || column >= columns()); }
 };
 
 };  // namespace Utility
