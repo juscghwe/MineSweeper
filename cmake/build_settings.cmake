@@ -1,10 +1,6 @@
 # build_settings.cmake [root]
 # Handles custom build settings (e.g., warnings, flags)
 
-if(BUILD_TESTS)
-    include(cmake/tests.cmake)
-endif()
-
 if(WIN32)
     add_custom_command(
         TARGET ${PROJECT_NAME}

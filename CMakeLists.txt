@@ -25,7 +25,9 @@ add_executable(${PROJECT_NAME} src/main.cpp)
 # Include
 include(cmake/dependencies.cmake)
 include(cmake/build_settings.cmake)
-include(cmake/tests.cmake)
+if(BUILD_TESTS)
+    include(cmake/tests.cmake)
+endif()
 
 # Link libraries
 target_link_libraries(${PROJECT_NAME} PRIVATE sfml-graphics generator gui utility)
