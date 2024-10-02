@@ -14,43 +14,44 @@ OneCell::OneCell(Utility::CellStruct cellStruct, const PixelStruct kPosition, Te
 {
     sf::Sprite sprite_;
     sprite_.setPosition(kPosition_.X, kPosition_.Y);
-    redraw(kTextureManager_);
+    redraw();
 }
 
 void OneCell::gotClicked()
 {
     cellStruct_.isCovered = false;
-    redraw(kTextureManager_);
+    redraw();
 }
 
 void OneCell::gotFlagged()
 {
     if (cellStruct_.isCovered) {
         cellStruct_.isFlagged = true;
+        redraw();
     }
 }
 
 // @private
-const std::pair<GuiC::CellState, int> OneCell::getStateFromStruct(const Utility::CellStruct& kCellStruct)
+const std::pair<GuiC::CellState, int> OneCell::getStateFromStruct()
 {
 
-    if (kCellStruct.isCovered) {
+    if (cellStruct_.isCovered) {
         return {GuiC::CellState::Unknown, 0};
-    } else if (kCellStruct.isFlagged) {
+    } else if (cellStruct_.isFlagged) {
         return {GuiC::CellState::Flagged, 0};
     } else {
-        if (kCellStruct.adjacentMines == 0) {
+        if (cellStruct_.adjacentMines == 0) {
             return {GuiC::CellState::Empty, 0};
         }
-        return {GuiC::CellState::Adjacent, kCellStruct.adjacentMines};
+        return {GuiC::CellState::Adjacent, cellStruct_.adjacentMines};
     }
 }
 
 //@private
-void OneCell::redraw(TextureManager& kTextureManager)
+void OneCell::redraw()
 {
-    auto [state, adjacent] = getStateFromStruct(cellStruct_);
-    const sf::Texture& texture = kTextureManager.getTexture(state, adjacent);
+    const auto [state, adjacent] = getStateFromStruct();
+    const sf::Texture& texture = kTextureManager_.getTexture(state, adjacent);
     sprite_.setTexture(texture);
     // TODO: Call for redraw
 }

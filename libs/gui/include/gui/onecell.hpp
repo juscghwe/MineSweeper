@@ -32,9 +32,9 @@ class OneCell
     const PixelStruct kPosition_;
     TextureManager& kTextureManager_;
 
-    const std::pair<GuiC::CellState, int> getStateFromStruct(const Utility::CellStruct& kCellStruct);
+    const std::pair<GuiC::CellState, int> getStateFromStruct();
 
-    void redraw(TextureManager& kTextureManager);
+    void redraw();
 };
 
 };  // namespace Gui
