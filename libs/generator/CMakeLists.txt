@@ -9,11 +9,13 @@ target_include_directories(generator
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/constants>
 )
 
-target_link_libraries(generator PUBLIC utility)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/sources.cmake)
 target_sources(generator PRIVATE ${SOURCES} ${HEADERS})
 
+# Link utility library to the gui target
+target_link_libraries(generator PRIVATE utility)
+
 # Add tests if enabled globally
 if(BUILD_TESTS)
-    add_subdirectory(tests)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/tests.cmake)
 endif()

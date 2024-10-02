@@ -12,6 +12,8 @@ set(CMAKE_CXX_COMPILER "C:/msys64/ucrt64/bin/g++.exe")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
+option(BUILD_TESTS "Enable building of tests" ON)
+
 # Add libraries
 add_subdirectory(libs/generator)
 add_subdirectory(libs/gui)

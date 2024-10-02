@@ -3,7 +3,6 @@
 
 if(BUILD_TESTS)
     include(cmake/tests.cmake)
-    add_subdirectory(test)
 endif()
 
 if(WIN32)
