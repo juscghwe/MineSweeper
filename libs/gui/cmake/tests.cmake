@@ -7,7 +7,7 @@ set(TESTSOURCES
 
 include(${CMAKE_SOURCE_DIR}/cmake/functions.cmake)
 
-add_test_executable(${TESTNAME} "${TESTSOURCES}" gtest gtest_main sfml-graphics gui)
+add_test_executable(${TESTNAME} "${TESTSOURCES}" gtest gtest_main sfml-graphics utility gui)
 
 target_include_directories(${TESTNAME} 
     PRIVATE 

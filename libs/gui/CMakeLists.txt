@@ -13,7 +13,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/sources.cmake)
 target_sources(gui PRIVATE ${SOURCES} ${HEADERS})
 
 # Link SFML libraries to the gui target
-target_link_libraries(gui PUBLIC sfml-graphics)
+target_link_libraries(gui PUBLIC sfml-graphics utility)
 
 # Add tests if enabled globally
 if(BUILD_TESTS)
