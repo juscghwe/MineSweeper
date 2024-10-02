@@ -8,15 +8,19 @@
 
 #include "gui/texturemanager.hpp"
 #include "utility/cellstruct.hpp"
-#include "utility/positionstruct.hpp"
 #include <SFML/Graphics.hpp>
 
 namespace Gui {
 
+struct PixelStruct {
+    int X;
+    int Y;
+};
+
 class OneCell
 {
   public:
-    OneCell(Utility::CellStruct cellStruct, const Utility::PositionStruct kPosition, TextureManager& kTextureManager);
+    OneCell(Utility::CellStruct cellStruct, const PixelStruct kPosition, TextureManager& kTextureManager);
 
     void gotClicked();
 
@@ -25,7 +29,7 @@ class OneCell
   private:
     sf::Sprite sprite_;
     Utility::CellStruct cellStruct_;
-    const Utility::PositionStruct kPosition_;
+    const PixelStruct kPosition_;
     TextureManager& kTextureManager_;
 
     const std::pair<GuiC::CellState, int> getStateFromStruct(const Utility::CellStruct& kCellStruct);

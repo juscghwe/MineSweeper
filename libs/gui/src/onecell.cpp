@@ -9,12 +9,11 @@ namespace GuiC = Constants::GuiConstants;
 
 namespace Gui {
 
-OneCell::OneCell(Utility::CellStruct cellStruct, const Utility::PositionStruct kPosition,
-                 TextureManager& kTextureManager)
+OneCell::OneCell(Utility::CellStruct cellStruct, const PixelStruct kPosition, TextureManager& kTextureManager)
     : cellStruct_(cellStruct), kPosition_(kPosition), kTextureManager_(kTextureManager)
 {
     sf::Sprite sprite_;
-    sprite_.setPosition(kPosition_.column, kPosition_.row);
+    sprite_.setPosition(kPosition_.X, kPosition_.Y);
     redraw(kTextureManager_);
 }
 
