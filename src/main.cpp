@@ -21,7 +21,7 @@ int main()
     // TODO: Remove
     for (std::vector<Utility::CellStruct> row : playfield->getFieldGrid()) {
         for (Utility::CellStruct column : row) {
-            std::cout << (column.isMine ? "X" : std::to_string(column.adjecentMines));
+            std::cout << (column.isMine ? "X" : std::to_string(column.adjacentMines));
         }
         std::cout << "\n";
     }

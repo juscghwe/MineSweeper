@@ -65,7 +65,7 @@ TEST_F(FieldGeneratorTest, AdjacentMinesAreCalculatedCorrectly)
                 }
             }
 
-            EXPECT_EQ(field->at(row, col).adjecentMines, expectedAdjMines);
+            EXPECT_EQ(field->at(row, col).adjacentMines, expectedAdjMines);
         }
     }
 }
