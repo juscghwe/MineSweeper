@@ -14,6 +14,10 @@ option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
 option(BUILD_TESTS "Enable building of tests" ON)
 
+if(BUILD_TESTS)
+    enable_testing()
+endif()
+
 # Add libraries
 add_subdirectory(libs/generator)
 add_subdirectory(libs/gui)

@@ -1,4 +1,5 @@
 # CMakeLists.txt [libs_generator]
+
 add_library(generator STATIC)
 
 target_include_directories(generator
