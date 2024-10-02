@@ -55,9 +55,9 @@ class OneCell
 
     /**
      * @brief Retrieves the state of the cell from its structure.
-     * @return `const std::pair<GuiC::CellState, int>` A pair containing the cell's visual state and the number of adjacent mines.
+     * @return `const std::pair<Constants::GuiConstants::CellState, int>` A pair containing the cell's visual state and the number of adjacent mines.
      */
-    const std::pair<GuiC::CellState, int> getStateFromStruct();
+    const std::pair<Constants::GuiConstants::CellState, int> getStateFromStruct();
 
     /**
      * @brief Redraws the cell by updating its sprite texture according to its current state.
