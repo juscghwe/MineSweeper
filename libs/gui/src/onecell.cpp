@@ -9,8 +9,9 @@ namespace GuiC = Constants::GuiConstants;
 
 namespace Gui {
 
-OneCell::OneCell(Utility::CellStruct cellStruct, const PixelStruct kPosition, TextureManager& textureManager)
-    : cellStruct_(cellStruct), kPosition_(kPosition), textureManager_(textureManager)
+OneCell::OneCell(Utility::CellStruct cellStruct, const PixelStruct kPosition, const PixelStruct kScale,
+                 TextureManager& textureManager)
+    : cellStruct_(cellStruct), kPosition_(kPosition), kScale_(kScale), textureManager_(textureManager)
 {
     sf::Sprite sprite_;
     sprite_.setPosition(kPosition_.X, kPosition_.Y);
@@ -53,7 +54,15 @@ void OneCell::redraw()
     const auto [state, adjacent] = getStateFromStruct();
     const sf::Texture& texture = textureManager_.getTexture(state, adjacent);
     sprite_.setTexture(texture);
-    // TODO: Call for redraw
+
+    float cellWidth = kScale_.X;
+    float cellHeight = kScale_.Y;
+
+    sf::Vector2u textureSize = texture.getSize();  // Get the original size of the texture
+
+    sprite_.setScale(
+        cellWidth / textureSize.x,
+        cellHeight / textureSize.y);  // Set the scale based on the ratio between desired size and texture size
 }
 
 };  // namespace Gui

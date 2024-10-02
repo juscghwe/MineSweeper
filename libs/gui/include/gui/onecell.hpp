@@ -35,7 +35,8 @@ class OneCell
      * @param kPosition `PixelStruct` The pixel position of the cell on the screen.
      * @param textureManager `TextureManager&` Reference to the texture manager responsible for managing cell textures.
      */
-    OneCell(Utility::CellStruct cellStruct, const PixelStruct kPosition, TextureManager& textureManager);
+    OneCell(Utility::CellStruct cellStruct, const PixelStruct kPosition, const PixelStruct kScale,
+            TextureManager& textureManager);
 
     /**
      * @brief Marks the cell as clicked, changing its internal state and updating its visual representation.
@@ -51,6 +52,7 @@ class OneCell
     sf::Sprite sprite_;               ///< The sprite representing the cell's texture.
     Utility::CellStruct cellStruct_;  ///< Data structure containing the cell's logical state.
     const PixelStruct kPosition_;     ///< The pixel position of the cell.
+    const PixelStruct kScale_;        ///< The sprite size of the cell.
     TextureManager& textureManager_;  ///< Reference to the texture manager.
 
     /**
