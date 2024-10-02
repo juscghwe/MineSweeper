@@ -9,9 +9,8 @@ namespace GuiC = Constants::GuiConstants;
 
 namespace Gui {
 
-OneCell::OneCell(Utility::CellStruct cellStruct, const PixelStruct kPosition, const PixelStruct kScale,
-                 TextureManager& textureManager)
-    : cellStruct_(cellStruct), kPosition_(kPosition), kScale_(kScale), textureManager_(textureManager)
+OneCell::OneCell(Utility::CellStruct cellStruct, const PixelStruct kPosition, TextureManager& textureManager)
+    : cellStruct_(cellStruct), kPosition_(kPosition), textureManager_(textureManager)
 {
     sf::Sprite sprite_;
     sprite_.setPosition(kPosition_.X, kPosition_.Y);
