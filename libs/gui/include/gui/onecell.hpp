@@ -20,7 +20,7 @@ struct PixelStruct {
 class OneCell
 {
   public:
-    OneCell(Utility::CellStruct cellStruct, const PixelStruct kPosition, TextureManager& kTextureManager);
+    OneCell(Utility::CellStruct cellStruct, const PixelStruct kPosition, TextureManager& textureManager);
 
     void gotClicked();
 
@@ -30,7 +30,7 @@ class OneCell
     sf::Sprite sprite_;
     Utility::CellStruct cellStruct_;
     const PixelStruct kPosition_;
-    TextureManager& kTextureManager_;
+    TextureManager& textureManager_;
 
     const std::pair<GuiC::CellState, int> getStateFromStruct();
 

@@ -9,8 +9,8 @@ namespace GuiC = Constants::GuiConstants;
 
 namespace Gui {
 
-OneCell::OneCell(Utility::CellStruct cellStruct, const PixelStruct kPosition, TextureManager& kTextureManager)
-    : cellStruct_(cellStruct), kPosition_(kPosition), kTextureManager_(kTextureManager)
+OneCell::OneCell(Utility::CellStruct cellStruct, const PixelStruct kPosition, TextureManager& textureManager)
+    : cellStruct_(cellStruct), kPosition_(kPosition), textureManager_(textureManager)
 {
     sf::Sprite sprite_;
     sprite_.setPosition(kPosition_.X, kPosition_.Y);
@@ -51,7 +51,7 @@ const std::pair<GuiC::CellState, int> OneCell::getStateFromStruct()
 void OneCell::redraw()
 {
     const auto [state, adjacent] = getStateFromStruct();
-    const sf::Texture& texture = kTextureManager_.getTexture(state, adjacent);
+    const sf::Texture& texture = textureManager_.getTexture(state, adjacent);
     sprite_.setTexture(texture);
     // TODO: Call for redraw
 }
