@@ -5,18 +5,18 @@
 #include <stdexcept>
 #include <string>
 
-namespace MineSweeper {
-namespace KTextures {
+namespace Constants {
+namespace GuiConstants {
 
 /**
  * @brief Enumeration to represent the state of a cell.
  */
-enum CellState {
+enum class CellState {
     Unknown,  ///< The state is unknown (covered).
     Flagged,  ///< The cell is flagged.
     Mine,     ///< The cell contains a mine.
     Empty,    ///< The cell is empty (no adjacent mines).
-    Adjecent  ///< The cell is adjacent to a mine. Uses a dynamic mine count.
+    Adjacent  ///< The cell is adjacent to a mine. Uses a dynamic mine count.
 };
 
 class TextureConstants
@@ -61,20 +61,21 @@ class TextureConstants
     };
 
     /**
-     * @brief Returns texture corresponding with the cell adjecent counter.
-     * @param kMines `int` Number of adjecent mines.
+     * @brief Returns texture corresponding with the cell adjacent counter.
+     * @param kMines `int` Number of adjacent mines.
      * @return `const char*` with the texture path.
      * @throws `std::out_of_range` if theres no texture defined for the parameter.
      */
-    static constexpr const char* getAdjecentTexture(const int kMines)
+    static constexpr const char* getAdjacentTexture(const int kMines)
     {
-        return (kMines >= 1 && kMines <= 8)
-                   ? ADJACENT_TEXTURES[kMines - 1]
-                   : throw std::out_of_range("No texture defined for " + std::to_string(kMines) + " adjecent cells.");
+        if (kMines >= 1 && kMines <= 8) {
+            return ADJACENT_TEXTURES[kMines - 1];
+        }
+        throw std::out_of_range("No texture defined for " + std::to_string(kMines) + " adjacent cells.");
     };
 };
 
-};  // namespace KTextures
-};  // namespace MineSweeper
+};  // namespace GuiConstants
+};  // namespace Constants
 
-#endif  // GUI_CONSTANTS_H_
+#endif  // GUI_CONSTANTS_H

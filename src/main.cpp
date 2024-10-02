@@ -2,24 +2,25 @@
  * @file main.cpp
  * @author juscghwe <a href = "https://github.com/juscghwe">GitHub<\a>
  * @brief Main for MineSweeper.
- * @headerfile "include/generator/fieldgenerator.hpp"
- * @headerfile "SFML/Graphics.hpp"
+ * @headerfile "generator/fieldgenerator.hpp"
+ * @headerfile "utility/fieldvector.hpp"
  */
 
 #include "generator/fieldgenerator.hpp"
+#include "utility/fieldvector.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
 int main()
 {
     // Generation
-    MineSweeper::Generation::FieldGenerator fieldGenerator(10, 10, 4);
-    std::unique_ptr<MineSweeper::FieldVector> playfield = fieldGenerator.generateField();
+    Generator::FieldGenerator fieldGenerator(10, 10, 4);
+    std::unique_ptr<Utility::FieldVector> playfield = fieldGenerator.generateField();
 
     // testing only
     // TODO: Remove
-    for (std::vector<MineSweeper::CellStruct> row : playfield->getFieldGrid()) {
-        for (MineSweeper::CellStruct column : row) {
+    for (std::vector<Utility::CellStruct> row : playfield->getFieldGrid()) {
+        for (Utility::CellStruct column : row) {
             std::cout << (column.isMine ? "X" : std::to_string(column.adjecentMines));
         }
         std::cout << "\n";

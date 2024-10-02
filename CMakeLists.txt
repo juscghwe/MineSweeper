@@ -1,3 +1,7 @@
+# CMakeLists.txt [root]
+set(PROJECT_NAME MineSweeper)
+
+# root
 cmake_minimum_required(VERSION 3.28)
 project(MineSweeper LANGUAGES CXX)
 
@@ -6,76 +10,33 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_COMPILER "C:/msys64/ucrt64/bin/g++.exe")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
-include(FetchContent)
-FetchContent_Declare(SFML
-    GIT_REPOSITORY https://github.com/SFML/SFML.git
-    GIT_TAG 2.6.x
-    GIT_SHALLOW ON
-    EXCLUDE_FROM_ALL
-    SYSTEM)
-FetchContent_Declare(GoogleTest
-    GIT_REPOSITORY https://github.com/google/googletest.git
-    GIT_TAG v1.15.2)
-FetchContent_MakeAvailable(SFML)
-FetchContent_MakeAvailable(GoogleTest)
+option(BUILD_TESTS "Enable building of tests" ON)
 
-# Add includes
-include_directories(${CMAKE_SOURCE_DIR}/include)
-include_directories(${CMAKE_SOURCE_DIR}/constants)
+if(BUILD_TESTS)
+    enable_testing()
+endif()
 
-# Building release
-set(SOURCES
-    src/main.cpp
-    src/utility/fieldvector.cpp
-    src/generator/fieldgenerator.cpp
-    src/gui/texturemanager.cpp
-    # Add other source files as needed
-)
-add_executable(main ${SOURCES})
-target_link_libraries(main PRIVATE sfml-graphics)
-target_compile_features(main PRIVATE cxx_std_17)
-set_target_properties(main PROPERTIES OUTPUT_NAME "MineSweeper")
+# Add libraries
+add_subdirectory(libs/generator)
+add_subdirectory(libs/gui)
+add_subdirectory(libs/utility)
 
-# Tests
-include(CTest)
-enable_testing()
-## Global test dependencies
-set(TESTENVIRONMENTSGOOGLE
-    gtest 
-    gtest_main 
-)
-set(TESTENVIRONMENTSFML
-    sfml-graphics
-)
-## Function to add a test executable, ENVIRONMENTS passed as ARGN
-function(add_test_executable NAME)
-    set(TESTNAME test_${NAME})
-    file(GLOB_RECURSE TESTSOURCES tests/${NAME}/*.cpp src/${NAME}/*.cpp)
-    add_executable(${TESTNAME} ${TESTSOURCES})
-    set(ENVIRONMENTS ${ARGN})
-    target_link_libraries(${TESTNAME} PRIVATE ${ENVIRONMENTS})
-    target_compile_definitions(${TESTNAME} PRIVATE TESTING)
-    add_test(NAME ${TESTNAME} COMMAND ${TESTNAME} WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
-endfunction()
-## All Tests
-### Tests Generator
-add_test_executable(generator ${TESTENVIRONMENTSGOOGLE})
-### Tests GUI
-add_test_executable(gui ${TESTENVIRONMENTSGOOGLE} ${TESTENVIRONMENTSFML})
-### Tests Utility
-add_test_executable(utility ${TESTENVIRONMENTSGOOGLE})
+# Build
+add_executable(${PROJECT_NAME} src/main.cpp)
+
+# Include
+include(cmake/dependencies.cmake)
+include(cmake/build_settings.cmake)
+if(BUILD_TESTS)
+    include(cmake/tests.cmake)
+endif()
+
+# Link libraries
+target_link_libraries(${PROJECT_NAME} PRIVATE sfml-graphics generator gui utility)
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Werror)
 
 # Clang-tidy
 set(CMAKE_CXX_CLANG_TIDY "C:/msys64/ucrt64/bin/clang-tidy.exe;-checks=*,-clang-analyzer-alpha*")
-
-
-if(WIN32)
-    add_custom_command(
-        TARGET main
-        COMMENT "Copy OpenAL DLL"
-        PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${SFML_SOURCE_DIR}/extlibs/bin/$<IF:$<EQUAL:${CMAKE_SIZEOF_VOID_P},8>,x64,x86>/openal32.dll $<TARGET_FILE_DIR:main>
-        VERBATIM)
-endif()
