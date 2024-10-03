@@ -5,9 +5,10 @@ target_include_directories(gui
     PUBLIC 
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
-    PRIVATE 
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/constants>
 )
+
+message("Include paths for gui: ${CMAKE_SOURCE_DIR}/constants")
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/sources.cmake)
 target_sources(gui PRIVATE ${SOURCES} ${HEADERS})
