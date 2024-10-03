@@ -47,6 +47,12 @@ class OneCell
      */
     void gotFlagged();
 
+    /**
+     * @brief Returns the instance sprite.
+     * @return `sf::Sprite&`
+     */
+    sf::Sprite& getSprite() { return sprite_; }
+
   private:
     sf::Sprite sprite_;               ///< The sprite representing the cell's texture.
     Utility::CellStruct cellStruct_;  ///< Data structure containing the cell's logical state.

@@ -4,7 +4,6 @@
  */
 
 #include "gui/fieldarray.hpp"
-#include "gui/onecell.hpp"
 #include "guiconstants.hpp"
 
 namespace GuiC = Constants::GuiConstants;
@@ -18,8 +17,18 @@ FieldArray::FieldArray(const std::unique_ptr<Utility::FieldVector>& kFieldVector
       kButtonY_(GuiC::WINDOWBASED ? GuiC::WINDOWY / kFieldVector->rows() : GuiC::BUTTONY),
       kFieldVector_(std::move(kFieldVector)),
       textureManager_(textureManager)
-{}
+{
+    initializeGrid();
+}
 
+void FieldArray::draw(sf::RenderWindow& window)
+{
+    for (Gui::OneCell& cell : cells_) {
+        window.draw(cell.getSprite());  // Assuming `OneCell` has a `getSprite()` method that returns the sprite to draw
+    }
+}
+
+// @private
 void FieldArray::initializeGrid()
 {
     int columnFactor = 0;  ///< Factor for X position
@@ -27,7 +36,7 @@ void FieldArray::initializeGrid()
     for (std::vector<Utility::CellStruct> row : kFieldVector_->getFieldGrid()) {
         for (Utility::CellStruct column : row) {
             const PixelStruct position = {columnFactor * kButtonX_, rowFactor * kButtonY_};
-            Gui::OneCell(column, position, textureManager_);
+            cells_.emplace_back(column, position, textureManager_);
             columnFactor++;
         }
         rowFactor++;

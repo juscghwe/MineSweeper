@@ -34,6 +34,8 @@ int main()
         }
         window.clear();
 
+        fieldArray.draw(window);
+
         window.display();
     }
 

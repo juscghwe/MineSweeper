@@ -7,6 +7,7 @@
 #ifndef FIELD_ARRAY_H
 #define FIELD_ARRAY_H
 
+#include "gui/onecell.hpp"
 #include "gui/texturemanager.hpp"
 #include "utility/fieldvector.hpp"
 #include <memory>
@@ -33,6 +34,12 @@ class FieldArray
      */
     const std::pair<int, int> getWindowSize() const { return std::pair<int, int>{kWindowX_, kWindowY_}; };
 
+    /**
+     * @brief Draws all the OneCell entities within the field.
+     * @param window `sf::RenderWindow`
+     */
+    void draw(sf::RenderWindow& window);
+
   private:
     const int kWindowX_;  ///< The width of the game window in pixels, based on grid columns and button size.
     const int kWindowY_;  ///< The height of the game window in pixels, based on grid rows and button size.
@@ -41,6 +48,7 @@ class FieldArray
     const std::unique_ptr<Utility::FieldVector>&
         kFieldVector_;                ///< A unique pointer to the Minesweeper grid's logical data structure.
     TextureManager& textureManager_;  ///< Reference to the texture manager responsible for grid rendering.
+    std::vector<Gui::OneCell> cells_;
 
     /**
      * @brief Initializes the grid of cells and sets up their visual positions.
