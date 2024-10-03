@@ -1,3 +1,8 @@
+/**
+ * @file cellstruct.hpp
+ * @author juscghwe <a href = "https://github.com/juscghwe">GitHub<\a>
+ * @brief Defines the fieldgeneration related constants for the Minesweeper game.
+ */
 #ifndef GENERATOR_CONSTANTS_H
 #define GENERATOR_CONSTANTS_H
 

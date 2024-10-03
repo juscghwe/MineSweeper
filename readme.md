@@ -1,26 +1,21 @@
-# CMake logic
+[comment]: <> (`root/readme.md`)
+[comment]: <> (@author juscghwe https://github.com/juscghwe)
+# Minesweeper Project (WIP)
 
-```batch
-project_root/
-│
-├── CMakeLists.txt             # Main CMake file at the root
-├── cmake/                     # Folder for CMake utilities and split logic
-│   ├── tests.cmake            # Handles test-specific configurations
-│   ├── dependencies.cmake     # Handles external dependencies
-│   ├── build_settings.cmake   # Handles custom build settings (e.g., warnings, flags)
-│   └── functions.cmake        # Utility functions for reuse across libs/tests
-├── libs/
-│   ├── generator/
-│   │   ├── CMakeLists.txt     # Library-specific CMake file
-│   │   └── cmake/
-│   │       ├── source.cmake   # Sources for the generator lib
-│   │       └── dependencies.cmake  # Dependencies for the generator lib
-│   ├── gui/
-│   │   ├── CMakeLists.txt     # Same structure for GUI library
-│   │   └── cmake/
-│   │       └── source.cmake   # Sources for the GUI lib
-└── tests/
-    ├── CMakeLists.txt         # Unit test configuration
-    └── cmake/
-        └── test_sources.cmake # Test source files for the entire project
-```
+Welcome to my **Minesweeper** project! This repository serves as a **learning ground** for me to experiment and grow as a developer. Please note that everything is a **work in progress (WIP)**, and the code might be incomplete or undergoing changes as I work through different concepts and techniques.
+
+### 🚀 Goals:
+- **Learning by doing**: This project is part of my journey to strengthen my skills in **C++**, **CMake**, **SFML**, and more.
+- **Iterative development**: The project evolves as I explore new ideas, experiment with designs, and refine best practices.
+
+### 👨‍💻 Feedback:
+I'm **open to feedback and criticism**! I want to improve and grow, so if you have suggestions, feel free to share them. Constructive feedback is always welcome, as it helps me refine my approach and learn from mistakes.
+
+### 🛠️ Status:
+- This project is **not yet complete** and should be considered experimental.
+- Expect frequent changes, as I explore new features and optimizations.
+
+### 💡 Contributing:
+If you'd like to provide suggestions or help me grow, feel free to submit an issue or reach out. I'm always open to learning from others.
+
+

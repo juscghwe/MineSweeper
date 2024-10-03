@@ -1,3 +1,8 @@
+/**
+ * @file guiconstants.hpp
+ * @author juscghwe <a href = "https://github.com/juscghwe">GitHub<\a>
+ * @brief Defines the GUI related constants for the Minesweeper game.
+ */
 #ifndef GUI_CONSTANTS_H
 #define GUI_CONSTANTS_H
 
