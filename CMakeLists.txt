@@ -38,5 +38,13 @@ target_link_libraries(${PROJECT_NAME} PRIVATE sfml-graphics generator gui utilit
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Werror)
 
+# Copy assets to output folder
+file(GLOB_RECURSE ASSETS_FILES ${CMAKE_SOURCE_DIR}/assets/*)
+foreach(asset ${ASSETS_FILES})
+    get_filename_component(asset_dir ${asset} DIRECTORY)
+    file(RELATIVE_PATH asset_rel_path ${CMAKE_SOURCE_DIR}/assets ${asset})
+    configure_file(${asset} ${CMAKE_BINARY_DIR}/bin/assets/${asset_rel_path} COPYONLY)
+endforeach()
+
 # Clang-tidy
 set(CMAKE_CXX_CLANG_TIDY "C:/msys64/ucrt64/bin/clang-tidy.exe;-checks=*,-clang-analyzer-alpha*")

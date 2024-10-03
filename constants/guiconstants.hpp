@@ -14,6 +14,16 @@ namespace Constants {
 namespace GuiConstants {
 
 /**
+ * @brief Scalings. 
+ * @details If `WINDOWBASED == true` the window-values will be used to scale the buttons, vice versa.
+ */
+constexpr bool WINDOWBASED = true;
+constexpr int WINDOWX = 100;
+constexpr int WINDOWY = 100;
+constexpr int BUTTONX = 10;
+constexpr int BUTTONY = 10;
+
+/**
  * @brief Enumeration to represent the state of a cell.
  */
 enum class CellState {

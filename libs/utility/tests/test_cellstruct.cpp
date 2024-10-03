@@ -8,7 +8,7 @@ TEST(CellStructTest, DefaultConstructor)
     EXPECT_FALSE(cell.isMine);         ///< Cell should not be a mine at the beginning of the game.
     EXPECT_TRUE(cell.isCovered);       ///< Cell should be covered at the beginning of the game.
     EXPECT_FALSE(cell.isFlagged);      ///< Cell should not be flagged at the beginning of the game.
-    EXPECT_EQ(cell.adjecentMines, 0);  ///< Cell can't have adjecent Mines when the field hasn't been generated yet.
+    EXPECT_EQ(cell.adjacentMines, 0);  ///< Cell can't have adjacent Mines when the field hasn't been generated yet.
 }
 
 // Test if values of CellStruct can be modified
@@ -20,11 +20,11 @@ TEST(CellStructTest, ModifyCellAttributes)
     cell.isMine = true;
     cell.isCovered = false;
     cell.isFlagged = true;
-    cell.adjecentMines = 3;
+    cell.adjacentMines = 3;
 
     // verify new values
     EXPECT_TRUE(cell.isMine);
     EXPECT_FALSE(cell.isCovered);
     EXPECT_TRUE(cell.isFlagged);
-    EXPECT_EQ(cell.adjecentMines, 3);
+    EXPECT_EQ(cell.adjacentMines, 3);
 }

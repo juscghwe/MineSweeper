@@ -74,7 +74,7 @@ void FieldGenerator::calculateAdjecentMines(const Utility::PositionStruct& posit
     for (const Utility::PositionStruct& adjecent : Constants::GeneratorConstants::ADJACENT_FIELDS_RELATIVE) {
         if (position.row + adjecent.row >= 0 && position.row + adjecent.row < rows_ &&
             position.column + adjecent.column >= 0 && position.column + adjecent.column < columns_) {
-            fieldGrid_->at(position.row + adjecent.row, position.column + adjecent.column).adjecentMines += 1;
+            fieldGrid_->at(position.row + adjecent.row, position.column + adjecent.column).adjacentMines += 1;
         }
     }
 };
